@@ -1,0 +1,37 @@
+// ZyloPress PostgreSQL Driver
+import { logger } from '../../utils.zylo'
+
+class PostgresDriver {
+  var connection: Any = null
+  var config: Map
+
+  func connect(config: Map) -> Void {
+    this.config = config
+    // Assume Zylo has built-in postgres client
+    this.connection = zylo.db.postgres.connect({
+      host: config.DB_HOST,
+      port: config.DB_PORT,
+      database: config.DB_NAME,
+      user: config.DB_USER,
+      password: config.DB_PASSWORD
+    })
+    logger.info('Connected to PostgreSQL database')
+  }
+
+  func query(sql: String, params: List<Any>) -> List<Map> {
+    return this.connection.query(sql, params)
+  }
+
+  func close() -> Void {
+    if (this.connection) {
+      this.connection.close()
+      logger.info('PostgreSQL connection closed')
+    }
+  }
+
+  func getName() -> String {
+    return 'PostgreSQL'
+  }
+}
+
+export default PostgresDriver

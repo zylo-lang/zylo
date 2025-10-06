@@ -1,0 +1,4 @@
+# github.com/zylo-lang/zylo/internal/codegen
+internal\codegen\codegen.go:268:18: invalid operation: stmt.Name (variable of type *ast.Identifier) is not an interface
+FAIL	command-line-arguments [build failed]
+FAIL

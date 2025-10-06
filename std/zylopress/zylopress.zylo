@@ -1,0 +1,168 @@
+// ZyloPress - Native Zylo Backend Framework
+import Router from './router.zylo'
+import { logger, generateDocs } from './utils.zylo'
+import { errorHandler } from './middleware.zylo'
+
+// Built-in Zylo HTTP server
+var http = zylo.http
+
+class ZyloPressApp {
+  var routes: Map<String, Map<String, List<Function>>> = {}
+  var middlewares: List<Function> = []
+  var server: HttpServer
+  var routers: Map<String, Router> = {}
+  var port: Int
+
+  func init() {
+    this.server = http.createServer(this.handleRequest.bind(this))
+  }
+
+  func handleRequest(req: HttpRequest, res: HttpResponse) -> Void {
+    try {
+      // Enhance request with parsed body
+      req.body = this.parseBody(req)
+      req.params = this.parseParams(req.url)
+      req.query = this.parseQuery(req.url)
+
+      // Enhance response
+      res.json = (data: Any) => {
+        res.setHeader('Content-Type', 'application/json')
+        res.end(zylo.json.stringify(data))
+      }
+      res.status = (code: Int) => {
+        res.statusCode = code
+        return res
+      }
+      res.send = (text: String) => {
+        res.end(text)
+      }
+
+      // Apply global middlewares
+      for (middleware in this.middlewares) {
+        await middleware(req, res)
+      }
+
+      // Find route
+      var routeKey = req.method + ' ' + req.url.split('?')[0]
+      var route = this.routes.get(routeKey)
+
+      if (route) {
+        for (handler in route.handlers) {
+          var result = await handler(req, res)
+          if (result != null) {
+            res.json(result)
+            break
+          }
+        }
+      } else if (req.url == '/docs') {
+        var docs = generateDocs(this.routes)
+        res.json(docs)
+      } else {
+        res.status(404).json({ error: 'Not Found', code: 404 })
+      }
+
+      logger.info(req.method + ' ' + req.url + ' - ' + res.statusCode)
+    } catch (err) {
+      errorHandler(err, req, res)
+    }
+  }
+
+  func parseBody(req: HttpRequest) -> Map {
+    if (req.method == 'POST' || req.method == 'PUT' || req.method == 'PATCH') {
+      var body = ''
+      req.on('data', (chunk) => body += chunk)
+      req.on('end', () => {})
+      return zylo.json.parse(body) || {}
+    }
+    return {}
+  }
+
+  func parseParams(url: String) -> Map {
+    // Simple param parsing for routes like /users/:id
+    return {}
+  }
+
+  func parseQuery(url: String) -> Map {
+    var query = {}
+    var urlParts = url.split('?')
+    if (urlParts.length > 1) {
+      var queryString = urlParts[1]
+      var pairs = queryString.split('&')
+      for (pair in pairs) {
+        var [key, value] = pair.split('=')
+        query[key] = decodeURIComponent(value)
+      }
+    }
+    return query
+  }
+
+  func route(path: String) -> RouteBuilder {
+    return new RouteBuilder(this, path)
+  }
+
+  func on(event: String, handler: Function) -> Void {
+    if (event == 'request') {
+      this.middlewares.push(handler)
+    }
+  }
+
+  func router(basePath: String) -> Router {
+    var router = new Router()
+    router.init(basePath, this)
+    this.routers[basePath] = router
+    return router
+  }
+
+  func listen(port: Int, callback: Function = null) -> Void {
+    this.port = port
+    this.server.listen(port, () => {
+      logger.info('ZyloPress native server listening on port ' + port)
+      if (callback) callback()
+      this.startHotReload()
+    })
+  }
+
+  func startHotReload() -> Void {
+    zylo.fs.watch('./', { recursive: true }, (event, filename) => {
+      if (filename.endsWith('.zylo')) {
+        logger.info('Detected change in ' + filename + ', restarting server...')
+        this.server.close(() => {
+          // Reload modules and restart
+          zylo.module.reload()
+          this.server = zylo.http.createServer(this.handleRequest.bind(this))
+          this.server.listen(port)
+        })
+      }
+    })
+  }
+
+  func addRoute(method: String, path: String, handlers: List<Function>) -> Void {
+    var key = method + ' ' + path
+    this.routes[key] = { handlers: handlers }
+  }
+}
+
+class RouteBuilder {
+  var app: ZyloPressApp
+  var path: String
+  var handlers: Map<String, Function> = {}
+
+  func init(app: ZyloPressApp, path: String) {
+    this.app = app
+    this.path = path
+  }
+
+  func method(httpMethod: String, handler: Function) -> RouteBuilder {
+    this.handlers[httpMethod] = handler
+    this.app.addRoute(httpMethod, this.path, [handler])
+    return this
+  }
+}
+
+func app() -> ZyloPressApp {
+  var appInstance = new ZyloPressApp()
+  appInstance.init()
+  return appInstance
+}
+
+export default app

@@ -1,0 +1,260 @@
+// String manipulation utilities for Zylo standard library
+
+// Get string length
+func len(s string) int {
+    result int := 0
+    i int := 0
+    while s[i:i+1] != "" {
+        result = result + 1
+        i = i + 1
+    }
+    return result
+}
+
+// Convert to uppercase
+func upper(s string) string {
+    result string := ""
+    i int := 0
+    while i < len(s) {
+        char string := s[i:i+1]
+        if char >= "a" && char <= "z" {
+            // Simple ASCII conversion
+            result = result + string(int(char[0]) - 32)
+        } else {
+            result = result + char
+        }
+        i = i + 1
+    }
+    return result
+}
+
+// Convert to lowercase
+func lower(s string) string {
+    result string := ""
+    i int := 0
+    while i < len(s) {
+        char string := s[i:i+1]
+        if char >= "A" && char <= "Z" {
+            // Simple ASCII conversion
+            result = result + string(int(char[0]) + 32)
+        } else {
+            result = result + char
+        }
+        i = i + 1
+    }
+    return result
+}
+
+// Check if string contains substring
+func contains(s string, substr string) bool {
+    if len(substr) == 0 {
+        return true
+    }
+    if len(substr) > len(s) {
+        return false
+    }
+
+    i int := 0
+    while i <= len(s) - len(substr) {
+        match bool := true
+        j int := 0
+        while j < len(substr) {
+            if s[i+j:i+j+1] != substr[j:j+1] {
+                match = false
+                break
+            }
+            j = j + 1
+        }
+        if match {
+            return true
+        }
+        i = i + 1
+    }
+    return false
+}
+
+// Split string by delimiter
+func split(s string, delimiter string) []string {
+    if len(delimiter) == 0 {
+        show.error("[ZYLO_ERR_114] Tipo: Delimitador vacío en split. Línea: -1, Columna: -1")
+        return []string{}
+    }
+
+    result []string := []
+    current string := ""
+    i int := 0
+
+    while i < len(s) {
+        // Check if delimiter starts at current position
+        match bool := true
+        j int := 0
+        while j < len(delimiter) && i+j < len(s) {
+            if s[i+j:i+j+1] != delimiter[j:j+1] {
+                match = false
+                break
+            }
+            j = j + 1
+        }
+
+        if match && j == len(delimiter) {
+            result = append(result, current)
+            current = ""
+            i = i + len(delimiter)
+        } else {
+            current = current + s[i:i+1]
+            i = i + 1
+        }
+    }
+
+    result = append(result, current)
+    return result
+}
+
+// Join array of strings with separator
+func join(strings []string, separator string) string {
+    if len(strings) == 0 {
+        return ""
+    }
+
+    result string := strings[0]
+    i int := 1
+    while i < len(strings) {
+        result = result + separator + strings[i]
+        i = i + 1
+    }
+    return result
+}
+
+// Trim whitespace from both ends
+func trim(s string) string {
+    return trim_left(trim_right(s))
+}
+
+// Trim whitespace from left side
+func trim_left(s string) string {
+    i int := 0
+    while i < len(s) {
+        char string := s[i:i+1]
+        if char != " " && char != "\t" && char != "\n" && char != "\r" {
+            break
+        }
+        i = i + 1
+    }
+    return s[i:]
+}
+
+// Trim whitespace from right side
+func trim_right(s string) string {
+    i int := len(s) - 1
+    while i >= 0 {
+        char string := s[i:i+1]
+        if char != " " && char != "\t" && char != "\n" && char != "\r" {
+            break
+        }
+        i = i - 1
+    }
+    return s[:i+1]
+}
+
+// Replace first occurrence of substring
+func replace(s string, old string, new string) string {
+    if len(old) == 0 {
+        show.error("[ZYLO_ERR_115] Tipo: Subcadena antigua vacía en replace. Línea: -1, Columna: -1")
+        return s
+    }
+
+    index int := index_of(s, old)
+    if index == -1 {
+        return s
+    }
+
+    return s[:index] + new + s[index + len(old):]
+}
+
+// Get substring from start to end index
+func substr(s string, start int, end int) string {
+    if start < 0 {
+        start = 0
+    }
+    if end > len(s) {
+        end = len(s)
+    }
+    if start >= end {
+        return ""
+    }
+    return s[start:end]
+}
+
+// Find index of substring
+func index_of(s string, substr string) int {
+    if len(substr) == 0 {
+        return 0
+    }
+    if len(substr) > len(s) {
+        return -1
+    }
+
+    i int := 0
+    while i <= len(s) - len(substr) {
+        match bool := true
+        j int := 0
+        while j < len(substr) {
+            if s[i+j:i+j+1] != substr[j:j+1] {
+                match = false
+                break
+            }
+            j = j + 1
+        }
+        if match {
+            return i
+        }
+        i = i + 1
+    }
+    return -1
+}
+
+// Get first character
+func first(s string) string {
+    if len(s) == 0 {
+        return ""
+    }
+    return s[0:1]
+}
+
+// Get last character
+func last(s string) string {
+    if len(s) == 0 {
+        return ""
+    }
+    return s[len(s)-1:]
+}
+
+// Check if string starts with prefix
+func starts_with(s string, prefix string) bool {
+    if len(prefix) > len(s) {
+        return false
+    }
+    return s[0:len(prefix)] == prefix
+}
+
+// Check if string ends with suffix
+func ends_with(s string, suffix string) bool {
+    if len(suffix) > len(s) {
+        return false
+    }
+    return s[len(s)-len(suffix):] == suffix
+}
+
+// Repeat string n times
+func repeat(s string, n int) string {
+    if n <= 0 {
+        return ""
+    }
+    result string := ""
+    i int := 0
+    while i < n {
+        result = result + s
+        i = i + 1
+    }
+    return result
+}

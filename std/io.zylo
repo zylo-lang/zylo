@@ -1,0 +1,267 @@
+// Input/Output utilities for Zylo standard library
+
+// Read string from standard input
+func read() string {
+    // Implementation handled by runtime
+    return ""
+}
+
+// Read line from standard input (with newline)
+func read_line() string {
+    // Implementation handled by runtime
+    return ""
+}
+
+// Read integer from standard input
+func read_int() int {
+    input string := read()
+    // Simple conversion - assumes valid integer input
+    result int := 0
+    i int := 0
+    negative bool := false
+
+    if len(input) > 0 && input[0:1] == "-" {
+        negative = true
+        i = 1
+    }
+
+    while i < len(input) {
+        char string := input[i:i+1]
+        if char >= "0" && char <= "9" {
+            digit int := int(char[0]) - int("0"[0])
+            result = result * 10 + digit
+        } else {
+            show.error("[ZYLO_ERR_124] Tipo: Carácter no numérico en read_int. Línea: -1, Columna: -1")
+            return 0
+        }
+        i = i + 1
+    }
+
+    if negative {
+        result = -result
+    }
+
+    return result
+}
+
+// Read float from standard input
+func read_float() float {
+    input string := read()
+    // Very basic float parsing - simplified implementation
+    if contains(input, ".") {
+        parts []string := split(input, ".")
+        if len(parts) == 2 {
+            integer_part int := 0
+            decimal_part int := 0
+
+            // Parse integer part
+            i int := 0
+            negative bool := false
+            if len(parts[0]) > 0 && parts[0][0:1] == "-" {
+                negative = true
+                i = 1
+            }
+            while i < len(parts[0]) {
+                char string := parts[0][i:i+1]
+                if char >= "0" && char <= "9" {
+                    digit int := int(char[0]) - int("0"[0])
+                    integer_part = integer_part * 10 + digit
+                }
+                i = i + 1
+            }
+
+            // Parse decimal part
+            i = 0
+            decimal_len int := len(parts[1])
+            while i < len(parts[1]) {
+                char string := parts[1][i:i+1]
+                if char >= "0" && char <= "9" {
+                    digit int := int(char[0]) - int("0"[0])
+                    decimal_part = decimal_part * 10 + digit
+                }
+                i = i + 1
+            }
+
+            result float := float(integer_part) + float(decimal_part) / power(float(10), float(decimal_len))
+            if negative {
+                result = -result
+            }
+            return result
+        }
+    }
+
+    // No decimal point, treat as integer
+    return float(read_int())
+}
+
+// Read boolean from standard input ("true"/"false")
+func read_bool() bool {
+    input string := lower(trim(read()))
+    if input == "true" || input == "1" {
+        return true
+    } else if input == "false" || input == "0" {
+        return false
+    } else {
+        show.error("[ZYLO_ERR_125] Tipo: Valor boolean inválido en read_bool. Línea: -1, Columna: -1")
+        return false
+    }
+}
+
+// Write string to standard output
+func write(text string) {
+    // Implementation handled by runtime
+}
+
+// Write string to standard output with newline
+func write_line(text string) {
+    write(text + "\n")
+}
+
+// Write formatted string (basic implementation)
+func write_formatted(format string, args []any) {
+    // Very basic formatting - replace %s with args
+    result string := format
+    i int := 0
+    while i < len(args) {
+        placeholder string := "%s"
+        arg_str string := ""
+        if args[i] == string(int(args[i])) {  // numeric conversion
+            arg_str = string(int(args[i]))
+        } else {
+            arg_str = args[i]  // assume string
+        }
+
+        result = replace(result, placeholder, arg_str)
+        i = i + 1
+    }
+    write(result)
+}
+
+// Print with newline (alias for write_line)
+func print(text string) {
+    write_line(text)
+}
+
+// Print formatted with newline
+func printf(format string, args []any) {
+    write_formatted(format, args)
+    write("\n")
+}
+
+// Clear screen (simplified)
+func clear() {
+    // Implementation handled by runtime - sends clear command
+}
+
+// Get terminal width
+func get_terminal_width() int {
+    // Implementation handled by runtime
+    return 80
+}
+
+// Get terminal height
+func get_terminal_height() int {
+    // Implementation handled by runtime
+    return 24
+}
+
+// Check if input is available without blocking
+func input_available() bool {
+    // Implementation handled by runtime
+    return false
+}
+
+// Read all available input
+func read_available() string {
+    result string := ""
+    while input_available() {
+        result = result + read()
+    }
+    return result
+}
+
+// Prompt user with message and read response
+func prompt(message string) string {
+    write(message + ": ")
+    return trim(read_line())
+}
+
+// Prompt user with message and read integer
+func prompt_int(message string) int {
+    write(message + ": ")
+    return read_int()
+}
+
+// Prompt user with message and read float
+func prompt_float(message string) float {
+    write(message + ": ")
+    return read_float()
+}
+
+// Prompt user with yes/no question
+func prompt_yes_no(message string) bool {
+    write(message + " (y/n): ")
+    response string := lower(trim(read_line()))
+    return response == "y" || response == "yes" || response == "true"
+}
+
+// Create progress bar
+func progress_bar(current int, total int, width int) string {
+    if total <= 0 {
+        show.error("[ZYLO_ERR_126] Tipo: Total no positivo en progress_bar. Línea: -1, Columna: -1")
+        return ""
+    }
+
+    percentage float := float(current) / float(total)
+    if percentage > 1.0 {
+        percentage = 1.0
+    }
+
+    filled int := int(percentage * float(width))
+    empty int := width - filled
+
+    bar string := repeat("█", filled)
+    empty_bar string := repeat("░", empty)
+
+    return bar + empty_bar + " " + string(int(percentage * 100)) + "%"
+}
+
+// Show spinner animation (simplified)
+func spinner(frame int) string {
+    frames []string := ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"]
+    return frames[frame % len(frames)]
+}
+
+// Get input with validation
+func read_with_validation(prompt string, validator func(string) bool) string {
+    input string := ""
+
+    while true {
+        write(prompt + ": ")
+        input = trim(read_line())
+
+        if validator(input) {
+            break
+        }
+
+        write_line("Entrada inválida. Inténtelo de nuevo.")
+    }
+
+    return input
+}
+
+// Multi-line input
+func read_multiline(terminator string) string {
+    result string := ""
+    line string := ""
+
+    while true {
+        line = read_line()
+        if trim(line) == terminator {
+            break
+        }
+        result = result + line
+    }
+
+    return result
+}

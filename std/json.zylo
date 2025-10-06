@@ -1,0 +1,98 @@
+// JSON parsing and serialization utilities for Zylo standard library
+
+// Validate if a string is valid JSON
+func is_valid(json_str string) bool {
+    // Basic validation - check for balanced braces and brackets
+    if len(json_str) == 0 {
+        return false
+    }
+
+    brace_count int := 0
+    bracket_count int := 0
+    in_string bool := false
+    escape_next bool := false
+
+    i int := 0
+    while i < len(json_str) {
+        char string := json_str[i:i+1]
+
+        if escape_next {
+            escape_next = false
+            i = i + 1
+            continue
+        }
+
+        if char == "\\" {
+            escape_next = true
+            i = i + 1
+            continue
+        }
+
+        if char == "\"" {
+            in_string = !in_string
+            i = i + 1
+            continue
+        }
+
+        if in_string {
+            i = i + 1
+            continue
+        }
+
+        if char == "{" {
+            brace_count = brace_count + 1
+        } else if char == "}" {
+            brace_count = brace_count - 1
+            if brace_count < 0 {
+                return false
+            }
+        } else if char == "[" {
+            bracket_count = bracket_count + 1
+        } else if char == "]" {
+            bracket_count = bracket_count - 1
+            if bracket_count < 0 {
+                return false
+            }
+        }
+
+        i = i + 1
+    }
+
+    return brace_count == 0 && bracket_count == 0 && !in_string
+}
+
+// Parse JSON string (simplified implementation)
+func parse(json_str string) any {
+    if !is_valid(json_str) {
+        show.error("[ZYLO_ERR_113] Tipo: JSON inválido. Línea: -1, Columna: -1")
+        return nil
+    }
+    // Implementation handled by runtime
+    return nil
+}
+
+// Stringify value to JSON string (simplified implementation)
+func stringify(value any) string {
+    // Implementation handled by runtime
+    return "{}"
+}
+
+// Deep clone an object (simplified)
+func clone(obj any) any {
+    json_str string := stringify(obj)
+    return parse(json_str)
+}
+
+// Get value from map with default
+func get(obj map[string]any, key string, default_value any) any {
+    if value, exists := obj[key]; exists {
+        return value
+    }
+    return default_value
+}
+
+// Check if map has key
+func has_key(obj map[string]any, key string) bool {
+    _, exists := obj[key]
+    return exists
+}

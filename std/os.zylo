@@ -1,0 +1,304 @@
+// Operating system interfaces
+
+// Environment variables
+export func get_env(key: String, default: String = ""): String {
+    return env.get(key, default)
+}
+
+export func set_env(key: String, value: String): Bool {
+    env.set(key, value)
+    return true
+}
+
+export func env_vars(): Map {
+    // This would need to be implemented in the runtime
+    return {}
+}
+
+export func has_env(key: String): Bool {
+    return env.get(key) != ""
+}
+
+// Command line arguments
+export func args(): List {
+    return env.args()
+}
+
+export func script_name(): String {
+    return env.script()
+}
+
+// System information
+export func platform(): String {
+    return env.platform()
+}
+
+export func arch(): String {
+    return env.arch()
+}
+
+export func hostname(): String {
+    // This would need to be implemented in the runtime
+    return ""
+}
+
+export func username(): String {
+    // This would need to be implemented in the runtime
+    return get_env("USER", get_env("USERNAME", "unknown"))
+}
+
+export func home_dir(): String {
+    // This would need to be implemented in the runtime
+    return get_env("HOME", get_env("USERPROFILE", "/tmp"))
+}
+
+export func temp_dir(): String {
+    // This would need to be implemented in the runtime
+    return get_env("TMPDIR", get_env("TEMP", get_env("TMP", "/tmp")))
+}
+
+export func working_dir(): String {
+    // This would need to be implemented in the runtime
+    return ""
+}
+
+export func set_working_dir(path: String): Bool {
+    // This would need to be implemented in the runtime
+    return false
+}
+
+// Process management
+export class Process {
+    command: String
+    args: List
+    env: Map
+    cwd: String
+
+    func new(command: String, args: List = [], env: Map = {}, cwd: String = "") {
+        this.command = command
+        this.args = args
+        this.env = env
+        this.cwd = cwd
+    }
+
+    func run(): ProcessResult {
+        // This would need to be implemented in the runtime
+        return ProcessResult{0, "", "", false}
+    }
+
+    func run_async(): ProcessHandle {
+        // This would need to be implemented in the runtime
+        return ProcessHandle{}
+    }
+}
+
+export class ProcessResult {
+    exit_code: Int
+    stdout: String
+    stderr: String
+    success: Bool
+
+    func new(exit_code: Int, stdout: String, stderr: String, success: Bool) {
+        this.exit_code = exit_code
+        this.stdout = stdout
+        this.stderr = stderr
+        this.success = success
+    }
+}
+
+export class ProcessHandle {
+    pid: Int
+    running: Bool
+
+    func new(pid: Int = 0, running: Bool = false) {
+        this.pid = pid
+        this.running = running
+    }
+
+    func wait(): ProcessResult {
+        // This would need to be implemented in the runtime
+        return ProcessResult{0, "", "", true}
+    }
+
+    func kill(): Bool {
+        // This would need to be implemented in the runtime
+        return false
+    }
+}
+
+// Execute command
+export func exec(command: String, args: List = []): ProcessResult {
+    let proc = Process{command, args}
+    return proc.run()
+}
+
+export func exec_string(command: String): ProcessResult {
+    // Simple command parsing
+    let parts = command.split(" ")
+    let cmd = parts[0]
+    let args = parts[1:]
+    return exec(cmd, args)
+}
+
+// Path operations
+export func path_separator(): String {
+    if platform() == "windows" {
+        return "\\"
+    }
+    return "/"
+}
+
+export func path_list_separator(): String {
+    if platform() == "windows" {
+        return ";"
+    }
+    return ":"
+}
+
+export func join_path(parts: List): String {
+    return join(parts, path_separator())
+}
+
+export func split_path(path: String): List {
+    return path.split(path_separator())
+}
+
+export func basename(path: String): String {
+    let parts = split_path(path)
+    return parts[len(parts) - 1]
+}
+
+export func dirname(path: String): String {
+    let parts = split_path(path)
+    if len(parts) <= 1 {
+        return "."
+    }
+    return join_path(parts[0:len(parts)-1])
+}
+
+export func extname(path: String): String {
+    let base = basename(path)
+    let dot_index = base.last_index_of(".")
+    if dot_index == -1 {
+        return ""
+    }
+    return base[dot_index:]
+}
+
+export func is_absolute(path: String): Bool {
+    if platform() == "windows" {
+        return len(path) >= 2 && path[1] == ":"
+    }
+    return path.starts_with("/")
+}
+
+// Signal handling (placeholder)
+export const SIGINT = 2
+export const SIGTERM = 15
+export const SIGKILL = 9
+
+export func send_signal(pid: Int, signal: Int): Bool {
+    // This would need to be implemented in the runtime
+    return false
+}
+
+// System commands
+export func which(command: String): String {
+    if platform() == "windows" {
+        let result = exec("where", [command])
+        if result.success {
+            return result.stdout.trim()
+        }
+    } else {
+        let result = exec("which", [command])
+        if result.success {
+            return result.stdout.trim()
+        }
+    }
+    return ""
+}
+
+export func sleep(seconds: Int) {
+    // This would need to be implemented in the runtime
+    time.sleep_seconds(seconds)
+}
+
+export func exit(code: Int = 0) {
+    // This would need to be implemented in the runtime
+    // In a real implementation, this would terminate the program
+}
+
+// File permissions (Unix-like)
+export const PERM_READ = 4
+export const PERM_WRITE = 2
+export const PERM_EXECUTE = 1
+
+export func chmod(path: String, mode: Int): Bool {
+    // This would need to be implemented in the runtime
+    return false
+}
+
+export func chown(path: String, uid: Int, gid: Int): Bool {
+    // This would need to be implemented in the runtime
+    return false
+}
+
+// User and group information
+export func getuid(): Int {
+    // This would need to be implemented in the runtime
+    return 0
+}
+
+export func getgid(): Int {
+    // This would need to be implemented in the runtime
+    return 0
+}
+
+export func geteuid(): Int {
+    // This would need to be implemented in the runtime
+    return 0
+}
+
+export func getegid(): Int {
+    // This would need to be implemented in the runtime
+    return 0
+}
+
+// Network interfaces (placeholder)
+export func network_interfaces(): Map {
+    // This would need to be implemented in the runtime
+    return {}
+}
+
+// System load (placeholder)
+export func load_average(): List {
+    // This would need to be implemented in the runtime
+    return [0.0, 0.0, 0.0]
+}
+
+export func uptime(): Int {
+    // This would need to be implemented in the runtime
+    return 0
+}
+
+// Memory information (placeholder)
+export func total_memory(): Int {
+    // This would need to be implemented in the runtime
+    return 0
+}
+
+export func free_memory(): Int {
+    // This would need to be implemented in the runtime
+    return 0
+}
+
+// CPU information (placeholder)
+export func cpu_count(): Int {
+    // This would need to be implemented in the runtime
+    return 1
+}
+
+export func cpu_info(): List {
+    // This would need to be implemented in the runtime
+    return []
+}

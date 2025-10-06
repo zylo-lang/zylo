@@ -1,0 +1,250 @@
+// File system operations
+
+// File class for high-level file operations
+export class File {
+    path: String
+
+    func new(path: String) {
+        this.path = path
+    }
+
+    func exists(): Bool {
+        return file_exists(this.path)
+    }
+
+    func read(): String {
+        return read_file(this.path)
+    }
+
+    func read_lines(): List {
+        let content = read_file(this.path)
+        return content.split("\n")
+    }
+
+    func write(content: String): Bool {
+        return write_file(this.path, content)
+    }
+
+    func append(content: String): Bool {
+        return append_file(this.path, content)
+    }
+
+    func size(): Int {
+        return file_size(this.path)
+    }
+
+    func modified_time(): Int {
+        return file_modified(this.path)
+    }
+
+    func delete(): Bool {
+        return remove_file(this.path)
+    }
+
+    func copy_to(dest: String): Bool {
+        let content = this.read()
+        return write_file(dest, content)
+    }
+
+    func move_to(dest: String): Bool {
+        if this.copy_to(dest) {
+            return this.delete()
+        }
+        return false
+    }
+
+    func extension(): String {
+        let parts = this.path.split(".")
+        if len(parts) > 1 {
+            return parts[len(parts) - 1]
+        }
+        return ""
+    }
+
+    func name(): String {
+        let parts = this.path.split("/")
+        return parts[len(parts) - 1]
+    }
+
+    func dir(): String {
+        let parts = this.path.split("/")
+        if len(parts) > 1 {
+            return join(parts[0:len(parts)-1], "/")
+        }
+        return "."
+    }
+}
+
+// Directory class
+export class Directory {
+    path: String
+
+    func new(path: String) {
+        this.path = path
+    }
+
+    func exists(): Bool {
+        return dir_exists(this.path)
+    }
+
+    func create(): Bool {
+        return create_dir(this.path)
+    }
+
+    func list(): List {
+        return list_dir(this.path)
+    }
+
+    func list_recursive(): List {
+        let result = []
+        let items = this.list()
+        for item in items {
+            let full_path = this.path + "/" + item
+            result.append(full_path)
+            if dir_exists(full_path) {
+                let subdir = Directory{full_path}
+                let subitems = subdir.list_recursive()
+                for subitem in subitems {
+                    result.append(subitem)
+                }
+            }
+        }
+        return result
+    }
+
+    func delete(): Bool {
+        return remove_dir(this.path)
+    }
+
+    func is_empty(): Bool {
+        let items = this.list()
+        return len(items) == 0
+    }
+}
+
+// Path utilities
+export func join_path(parts: List): String {
+    return join(parts, "/")
+}
+
+export func normalize_path(path: String): String {
+    // Simple normalization - remove double slashes
+    while path.contains("//") {
+        path = path.replace("//", "/")
+    }
+    return path
+}
+
+export func is_absolute_path(path: String): Bool {
+    return path.startsWith("/")
+}
+
+export func relative_path(from: String, to: String): String {
+    // Simple relative path calculation
+    let from_parts = from.split("/")
+    let to_parts = to.split("/")
+
+    let i = 0
+    while i < len(from_parts) && i < len(to_parts) && from_parts[i] == to_parts[i] {
+        i = i + 1
+    }
+
+    let up_levels = len(from_parts) - i
+    let down_parts = to_parts[i:]
+
+    let result = []
+    let j = 0
+    while j < up_levels {
+        result.append("..")
+        j = j + 1
+    }
+
+    for part in down_parts {
+        result.append(part)
+    }
+
+    return join_path(result)
+}
+
+// File operations with error handling
+export func read_json_file(path: String): Any {
+    let file = File{path}
+    if !file.exists() {
+        throw "File does not exist: " + path
+    }
+    let content = file.read()
+    return json.parse(content)
+}
+
+export func write_json_file(path: String, data: Any, indent: Int = 2): Bool {
+    let json_str = json.stringify(data, indent: indent)
+    let file = File{path}
+    return file.write(json_str)
+}
+
+export func read_text_file(path: String, encoding: String = "utf-8"): String {
+    let file = File{path}
+    if !file.exists() {
+        throw "File does not exist: " + path
+    }
+    return file.read()
+}
+
+export func write_text_file(path: String, content: String, encoding: String = "utf-8"): Bool {
+    let file = File{path}
+    return file.write(content)
+}
+
+// Directory operations
+export func ensure_dir(path: String): Bool {
+    let dir = Directory{path}
+    if !dir.exists() {
+        return dir.create()
+    }
+    return true
+}
+
+export func remove_dir_recursive(path: String): Bool {
+    let dir = Directory{path}
+    if !dir.exists() {
+        return true
+    }
+
+    let items = dir.list()
+    for item in items {
+        let full_path = path + "/" + item
+        if dir_exists(full_path) {
+            if !remove_dir_recursive(full_path) {
+                return false
+            }
+        } else {
+            if !remove_file(full_path) {
+                return false
+            }
+        }
+    }
+
+    return dir.delete()
+}
+
+// Temporary files
+export func temp_file(prefix: String = "tmp", suffix: String = ""): String {
+    let timestamp = string(time.now())
+    return "/tmp/" + prefix + timestamp + suffix
+}
+
+export func temp_dir(prefix: String = "tmp"): String {
+    let timestamp = string(time.now())
+    return "/tmp/" + prefix + timestamp
+}
+
+// File watching (placeholder - would need runtime support)
+export func watch_file(path: String, callback: Func): Bool {
+    // This would need to be implemented in the runtime
+    return false
+}
+
+export func watch_dir(path: String, callback: Func): Bool {
+    // This would need to be implemented in the runtime
+    return false
+}

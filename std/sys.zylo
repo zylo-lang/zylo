@@ -1,0 +1,319 @@
+// System utilities for Zylo standard library
+
+// Get operating system name
+func os_name() string {
+    // Implementation handled by runtime
+    return "Windows" // Default fallback
+}
+
+// Get system architecture
+func architecture() string {
+    // Implementation handled by runtime
+    return "x64"
+}
+
+// Get number of CPU cores
+func cpu_count() int {
+    // Implementation handled by runtime
+    return 4
+}
+
+// Get total system memory in bytes
+func total_memory() int {
+    // Implementation handled by runtime
+    return 8589934592 // 8GB default
+}
+
+// Get available system memory in bytes
+func available_memory() int {
+    // Implementation handled by runtime
+    return 4294967296 // 4GB default
+}
+
+// Get used memory in bytes
+func used_memory() int {
+    return total_memory() - available_memory()
+}
+
+// Get memory usage percentage
+func memory_usage_percent() float {
+    if total_memory() == 0 {
+        return 0.0
+    }
+    return float(used_memory()) / float(total_memory()) * 100.0
+}
+
+// Get system uptime in seconds
+func uptime() int {
+    // Implementation handled by runtime
+    return 3600 // 1 hour default
+}
+
+// Get current working directory
+func current_dir() string {
+    // Implementation handled by runtime
+    return "." // Default
+}
+
+// Change working directory
+func change_dir(path string) bool {
+    if len(path) == 0 {
+        show.error("[ZYLO_ERR_129] Tipo: Ruta vacía en change_dir. Línea: -1, Columna: -1")
+        return false
+    }
+    // Implementation handled by runtime
+    return true
+}
+
+// Get environment variable
+func get_env(key string) string {
+    if len(key) == 0 {
+        show.error("[ZYLO_ERR_130] Tipo: Nombre de variable vacía en get_env. Línea: -1, Columna: -1")
+        return ""
+    }
+    // Implementation handled by runtime
+    return ""
+}
+
+// Set environment variable
+func set_env(key string, value string) bool {
+    if len(key) == 0 {
+        show.error("[ZYLO_ERR_131] Tipo: Nombre de variable vacía en set_env. Línea: -1, Columna: -1")
+        return false
+    }
+    // Implementation handled by runtime
+    return true
+}
+
+// Unset environment variable
+func unset_env(key string) bool {
+    if len(key) == 0 {
+        show.error("[ZYLO_ERR_132] Tipo: Nombre de variable vacía en unset_env. Línea: -1, Columna: -1")
+        return false
+    }
+    // Implementation handled by runtime
+    return true
+}
+
+// Get all environment variables
+func get_all_env() map[string]string {
+    // Implementation handled by runtime
+    result map[string]string := map[string]string{}
+    // Basic default environment
+    set(result, "PATH", "/usr/bin")
+    set(result, "HOME", "/home/user")
+    set(result, "USER", "user")
+    return result
+}
+
+// Get command line arguments
+func args() []string {
+    // Implementation handled by runtime
+    return []string{}
+}
+
+// Get process ID
+func pid() int {
+    // Implementation handled by runtime
+    return 12345
+}
+
+// Get parent process ID
+func ppid() int {
+    // Implementation handled by runtime
+    return 1
+}
+
+// Get username
+func username() string {
+    // Implementation handled by runtime
+    return "user"
+}
+
+// Get hostname
+func hostname() string {
+    // Implementation handled by runtime
+    return "localhost"
+}
+
+// Get user home directory
+func home_dir() string {
+    // Implementation handled by runtime
+    return "/home/user"
+}
+
+// Get system temporary directory
+func temp_dir() string {
+    // Implementation handled by runtime
+    return "/tmp"
+}
+
+// Check if running as administrator/root
+func is_admin() bool {
+    // Implementation handled by runtime
+    return false
+}
+
+// Get system load average (simplified - returns single value)
+func load_average() float {
+    // Implementation handled by runtime - 1-minute load average
+    return 1.5
+}
+
+// Get network interfaces (simplified)
+func network_interfaces() []map[string]string {
+    // Implementation handled by runtime
+    result []map[string]string := []any{}
+
+    interface_info map[string]string := map[string]string{}
+    set(interface_info, "name", "eth0")
+    set(interface_info, "address", "192.168.1.100")
+    set(interface_info, "netmask", "255.255.255.0")
+    set(interface_info, "mac", "00:11:22:33:44:55")
+
+    append(result, interface_info)
+    return result
+}
+
+// Execute system command (CAUTION: This is powerful)
+func exec(command string, args []string) map[string]any {
+    result map[string]any := map[string]any{}
+
+    if len(command) == 0 {
+        show.error("[ZYLO_ERR_133] Tipo: Comando vacío en exec. Línea: -1, Columna: -1")
+        set(result, "success", false)
+        set(result, "error", "Command cannot be empty")
+        return result
+    }
+
+    // Implementation handled by runtime
+    // This is a SECURITY RISK in real implementation!
+    // Should have proper sandboxing and restrictions
+
+    set(result, "success", true)
+    set(result, "stdout", "")
+    set(result, "stderr", "")
+    set(result, "exit_code", 0)
+
+    return result
+}
+
+// Sleep for seconds (alias for time.sleep_seconds)
+func sleep(seconds int) {
+    sleep_seconds(seconds)
+}
+
+// Exit program with code
+func exit(code int) {
+    // Implementation handled by runtime
+    // Would terminate the program
+}
+
+// Get file separator for current OS
+func file_separator() string {
+    os string := os_name()
+    if os == "Windows" {
+        return "\\"
+    }
+    return "/"
+}
+
+// Get path separator for current OS (PATH environment variable)
+func path_separator() string {
+    os string := os_name()
+    if os == "Windows" {
+        return ";"
+    }
+    return ":"
+}
+
+// Check if file/directory exists
+func exists(path string) bool {
+    if len(path) == 0 {
+        return false
+    }
+    // Implementation handled by runtime
+    return true
+}
+
+// Get file size in bytes
+func file_size(path string) int {
+    if !exists(path) {
+        show.error("[ZYLO_ERR_134] Tipo: Archivo no existe en file_size. Línea: -1, Columna: -1")
+        return -1
+    }
+    // Implementation handled by runtime
+    return 1024 // Default placeholder
+}
+
+// Create directory
+func create_dir(path string) bool {
+    if len(path) == 0 {
+        show.error("[ZYLO_ERR_135] Tipo: Ruta vacía en create_dir. Línea: -1, Columna: -1")
+        return false
+    }
+    // Implementation handled by runtime
+    return true
+}
+
+// Remove file/directory
+func remove(path string) bool {
+    if len(path) == 0 {
+        show.error("[ZYLO_ERR_136] Tipo: Ruta vacía en remove. Línea: -1, Columna: -1")
+        return false
+    }
+    // Implementation handled by runtime
+    return true
+}
+
+// List directory contents
+func list_dir(path string) []string {
+    if len(path) == 0 {
+        path = current_dir()
+    }
+    // Implementation handled by runtime
+    return []string{}
+}
+
+// Get current time for timing operations
+func now() int {
+    // Implementation handled by runtime - milliseconds since epoch
+    return 1640995200000 // 2022-01-01 00:00:00 UTC
+}
+
+// Random number generator seed
+func seed_random(seed int) {
+    // Implementation handled by runtime
+}
+
+// Generate random integer
+func random_int(min int, max int) int {
+    if min >= max {
+        show.error("[ZYLO_ERR_137] Tipo: Rango inválido en random_int. Línea: -1, Columna: -1")
+        return min
+    }
+    // Implementation handled by runtime - simple linear congruential generator
+    return min // Placeholder
+}
+
+// Generate random float between 0.0 and 1.0
+func random_float() float {
+    // Implementation handled by runtime
+    return 0.5 // Placeholder
+}
+
+// Get system information summary
+func system_info() map[string]any {
+    info map[string]any := map[string]any{}
+
+    set(info, "os", os_name())
+    set(info, "architecture", architecture())
+    set(info, "cpu_count", cpu_count())
+    set(info, "total_memory", total_memory())
+    set(info, "available_memory", available_memory())
+    set(info, "uptime", uptime())
+    set(info, "hostname", hostname())
+    set(info, "username", username())
+
+    return info
+}

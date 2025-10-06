@@ -1,0 +1,3950 @@
+=== RUN   TestListOperations
+=== RUN   TestListOperations/List_creation_and_access
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestListOperationsList_creation_and_access2470808629\001\main.go:32:1: syntax error: unexpected }, expected expression
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     numeros     interface{}     =     []interface{}{    zyloruntime.NewInteger(1)    ,     zyloruntime.NewInteger(2)    ,     zyloruntime.NewInteger(3)    ,     zyloruntime.NewInteger(4)    ,     zyloruntime.NewInteger(5)    }
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    // TODO: Expresión no soportada: *ast.IndexExpression    )    )
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    // TODO: Expresión no soportada: *ast.IndexExpression    )    )
+        }
+=== RUN   TestListOperations/List_with_different_types
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestListOperationsList_with_different_types1924745597\001\main.go:31:1: syntax error: unexpected }, expected expression
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     mixed     interface{}     =     []interface{}{    zyloruntime.NewInteger(1)    ,     zyloruntime.NewString("hello")    ,     zyloruntime.NewFloat(3.140000)    ,     true    }
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    // TODO: Expresión no soportada: *ast.IndexExpression    )    ,     zyloruntime.ToZyloObject(    // TODO: Expresión no soportada: *ast.IndexExpression    )    )
+        }
+=== RUN   TestListOperations/Empty_list
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestListOperationsEmpty_list1036253126\001\main.go:30:146: undefined: zyloruntime.Len
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     empty     interface{}     =     []interface{}{    }
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    zyloruntime.NewString("length:")    )    ,     zyloruntime.ToZyloObject(    zyloruntime.Len(    zyloruntime.ToZyloObject(    empty    )    )    )    )
+        }
+=== RUN   TestListOperations/List_operations_-_len
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestListOperationsList_operations_-_len4202706325\001\main.go:30:70: undefined: zyloruntime.Len
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     lista     interface{}     =     []interface{}{    zyloruntime.NewInteger(1)    ,     zyloruntime.NewInteger(2)    ,     zyloruntime.NewInteger(3)    ,     zyloruntime.NewInteger(4)    }
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    zyloruntime.Len(    zyloruntime.ToZyloObject(    lista    )    )    )    )
+        }
+=== RUN   TestListOperations/Nested_lists
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestListOperationsNested_lists906380766\001\main.go:31:1: syntax error: unexpected }, expected expression
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     nested     interface{}     =     []interface{}{    []interface{}{    zyloruntime.NewInteger(1)    ,     zyloruntime.NewInteger(2)    }    ,     []interface{}{    zyloruntime.NewInteger(3)    ,     zyloruntime.NewInteger(4)    }    ,     []interface{}{    zyloruntime.NewInteger(5)    ,     zyloruntime.NewInteger(6)    }    }
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    // TODO: Expresión no soportada: *ast.IndexExpression    )    ,     zyloruntime.ToZyloObject(    // TODO: Expresión no soportada: *ast.IndexExpression    )    )
+        }
+=== RUN   TestListOperations/List_indexing_with_variables
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestListOperationsList_indexing_with_variables3207219796\001\main.go:32:1: syntax error: unexpected }, expected expression
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     arr     interface{}     =     []interface{}{    zyloruntime.NewString("a")    ,     zyloruntime.NewString("b")    ,     zyloruntime.NewString("c")    ,     zyloruntime.NewString("d")    }
+            var     index     interface{}     =     zyloruntime.NewInteger(2)
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    // TODO: Expresión no soportada: *ast.IndexExpression    )    )
+        }
+--- FAIL: TestListOperations (3.69s)
+    --- FAIL: TestListOperations/List_creation_and_access (0.65s)
+    --- FAIL: TestListOperations/List_with_different_types (0.43s)
+    --- FAIL: TestListOperations/Empty_list (0.39s)
+    --- FAIL: TestListOperations/List_operations_-_len (0.36s)
+    --- FAIL: TestListOperations/Nested_lists (1.22s)
+    --- FAIL: TestListOperations/List_indexing_with_variables (0.65s)
+=== RUN   TestListSlicing
+=== RUN   TestListSlicing/Basic_list_slicing
+    framework.go:60: Parser errors: [expected RIGHT_BRACKET, got COLON unexpected token RIGHT_BRACKET in prefix position no prefix parse function for DOT found]
+=== RUN   TestListSlicing/Slice_from_beginning
+    framework.go:60: Parser errors: [expected RIGHT_BRACKET, got COLON unexpected token RIGHT_BRACKET in prefix position no prefix parse function for DOT found]
+=== RUN   TestListSlicing/Slice_to_end
+    framework.go:60: Parser errors: [expected RIGHT_BRACKET, got COLON]
+=== RUN   TestListSlicing/Single_element_slice
+    framework.go:60: Parser errors: [expected RIGHT_BRACKET, got COLON unexpected token RIGHT_BRACKET in prefix position no prefix parse function for DOT found]
+=== RUN   TestListSlicing/Slice_with_variables
+    framework.go:60: Parser errors: [expected RIGHT_BRACKET, got COLON unexpected token RIGHT_BRACKET in prefix position no prefix parse function for DOT found]
+--- FAIL: TestListSlicing (0.00s)
+    --- FAIL: TestListSlicing/Basic_list_slicing (0.00s)
+    --- FAIL: TestListSlicing/Slice_from_beginning (0.00s)
+    --- FAIL: TestListSlicing/Slice_to_end (0.00s)
+    --- FAIL: TestListSlicing/Single_element_slice (0.00s)
+    --- FAIL: TestListSlicing/Slice_with_variables (0.00s)
+=== RUN   TestNegativeIndexing
+=== RUN   TestNegativeIndexing/Negative_index_access
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestNegativeIndexingNegative_index_access17475113\001\main.go:31:1: syntax error: unexpected }, expected expression
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     lista     interface{}     =     []interface{}{    zyloruntime.NewInteger(1)    ,     zyloruntime.NewInteger(2)    ,     zyloruntime.NewInteger(3)    ,     zyloruntime.NewInteger(4)    }
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    // TODO: Expresión no soportada: *ast.IndexExpression    )    )
+        }
+=== RUN   TestNegativeIndexing/Negative_index_with_larger_list
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestNegativeIndexingNegative_index_with_larger_list1079151610\001\main.go:31:1: syntax error: unexpected }, expected expression
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     arr     interface{}     =     []interface{}{    zyloruntime.NewString("a")    ,     zyloruntime.NewString("b")    ,     zyloruntime.NewString("c")    ,     zyloruntime.NewString("d")    ,     zyloruntime.NewString("e")    ,     zyloruntime.NewString("f")    }
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    // TODO: Expresión no soportada: *ast.IndexExpression    )    ,     zyloruntime.ToZyloObject(    // TODO: Expresión no soportada: *ast.IndexExpression    )    )
+        }
+=== RUN   TestNegativeIndexing/Negative_slicing_should_fail_syntax
+--- FAIL: TestNegativeIndexing (0.96s)
+    --- FAIL: TestNegativeIndexing/Negative_index_access (0.49s)
+    --- FAIL: TestNegativeIndexing/Negative_index_with_larger_list (0.47s)
+    --- PASS: TestNegativeIndexing/Negative_slicing_should_fail_syntax (0.00s)
+=== RUN   TestMapOperations
+=== RUN   TestMapOperations/Map_creation_and_access
+    framework.go:71: Semantic errors: [ZYLO_ERR_003: Tipo incompatible - analysis:4:21 - índice debe ser entero
+          Esperado: esperado, Recibido: recibido
+          Sugerencia: Convierta el tipo explícitamente o cambie el tipo de la variable ZYLO_ERR_003: Tipo incompatible - analysis:5:21 - índice debe ser entero
+          Esperado: esperado, Recibido: recibido
+          Sugerencia: Convierta el tipo explícitamente o cambie el tipo de la variable]
+=== RUN   TestMapOperations/Map_with_different_types
+    framework.go:71: Semantic errors: [ZYLO_ERR_003: Tipo incompatible - analysis:4:18 - índice debe ser entero
+          Esperado: esperado, Recibido: recibido
+          Sugerencia: Convierta el tipo explícitamente o cambie el tipo de la variable ZYLO_ERR_003: Tipo incompatible - analysis:4:33 - índice debe ser entero
+          Esperado: esperado, Recibido: recibido
+          Sugerencia: Convierta el tipo explícitamente o cambie el tipo de la variable]
+=== RUN   TestMapOperations/Empty_map
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestMapOperationsEmpty_map1251210168\001\main.go:29:13: declared and not used: empty
+        C:\Users\Android\AppData\Local\Temp\TestMapOperationsEmpty_map1251210168\001\main.go:30:5: zyloruntime.Println(zyloruntime.ToZyloObject(zyloruntime.NewString("empty map"))) (no value) used as value
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     empty     interface{}     =     // TODO: Expresión no soportada: *ast.BlockExpression
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    zyloruntime.NewString("empty map")    )    )
+        }
+=== RUN   TestMapOperations/Map_with_non-existent_key
+    framework.go:71: Semantic errors: [ZYLO_ERR_003: Tipo incompatible - analysis:4:18 - índice debe ser entero
+          Esperado: esperado, Recibido: recibido
+          Sugerencia: Convierta el tipo explícitamente o cambie el tipo de la variable]
+=== RUN   TestMapOperations/Map_with_expression_keys
+    framework.go:60: Parser errors: [expected RIGHT_PAREN, got COMMA unexpected token RIGHT_PAREN in prefix position]
+=== RUN   TestMapOperations/Nested_maps
+    framework.go:71: Semantic errors: [ZYLO_ERR_003: Tipo incompatible - analysis:7:20 - índice debe ser entero
+          Esperado: esperado, Recibido: recibido
+          Sugerencia: Convierta el tipo explícitamente o cambie el tipo de la variable ZYLO_ERR_003: Tipo incompatible - analysis:7:28 - índice debe ser entero
+          Esperado: esperado, Recibido: recibido
+          Sugerencia: Convierta el tipo explícitamente o cambie el tipo de la variable]
+--- FAIL: TestMapOperations (0.47s)
+    --- FAIL: TestMapOperations/Map_creation_and_access (0.00s)
+    --- FAIL: TestMapOperations/Map_with_different_types (0.00s)
+    --- FAIL: TestMapOperations/Empty_map (0.47s)
+    --- FAIL: TestMapOperations/Map_with_non-existent_key (0.00s)
+    --- FAIL: TestMapOperations/Map_with_expression_keys (0.00s)
+    --- FAIL: TestMapOperations/Nested_maps (0.00s)
+=== RUN   TestComplexCollections
+=== RUN   TestComplexCollections/List_of_maps
+    framework.go:60: Parser errors: [expected RIGHT_BRACKET, got NEWLINE unexpected token RIGHT_BRACKET in prefix position no prefix parse function for DOT found]
+=== RUN   TestComplexCollections/Map_of_lists
+    framework.go:60: Parser errors: [expected RIGHT_BRACKET, got COMMA unexpected token RIGHT_BRACKET in prefix position unexpected token RIGHT_BRACKET in prefix position unexpected token RIGHT_BRACKET in prefix position expected '}', got EOF failed to parse function body]
+=== RUN   TestComplexCollections/Deep_nesting
+    framework.go:60: Parser errors: [expected RIGHT_BRACKET, got COMMA expected RIGHT_BRACKET, got COMMA unexpected token RIGHT_BRACKET in prefix position unexpected token RIGHT_BRACKET in prefix position]
+=== RUN   TestComplexCollections/Collection_iteration_preparation
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestComplexCollectionsCollection_iteration_preparation3181154140\001\main.go:29:13: declared and not used: data
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     data     interface{}     =     []interface{}{    zyloruntime.NewInteger(10)    ,     zyloruntime.NewInteger(20)    ,     zyloruntime.NewInteger(30)    ,     zyloruntime.NewInteger(40)    ,     zyloruntime.NewInteger(50)    }
+            var     sum     interface{}     =     zyloruntime.NewInteger(0)
+            // TODO: Sentencia no soportada: *ast.ForInStatement
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    sum    )    )
+        }
+--- FAIL: TestComplexCollections (0.60s)
+    --- FAIL: TestComplexCollections/List_of_maps (0.00s)
+    --- FAIL: TestComplexCollections/Map_of_lists (0.00s)
+    --- FAIL: TestComplexCollections/Deep_nesting (0.00s)
+    --- FAIL: TestComplexCollections/Collection_iteration_preparation (0.60s)
+=== RUN   TestCollectionErrors
+=== RUN   TestCollectionErrors/Index_out_of_bounds
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestCollectionErrorsIndex_out_of_bounds698477679\001\main.go:31:1: syntax error: unexpected }, expected expression
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     lista     interface{}     =     []interface{}{    zyloruntime.NewInteger(1)    ,     zyloruntime.NewInteger(2)    ,     zyloruntime.NewInteger(3)    }
+            var     elemento     interface{}     =     // TODO: Expresión no soportada: *ast.IndexExpression
+        }
+=== RUN   TestCollectionErrors/Negative_index_out_of_bounds
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestCollectionErrorsNegative_index_out_of_bounds3019644388\001\main.go:31:1: syntax error: unexpected }, expected expression
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     lista     interface{}     =     []interface{}{    zyloruntime.NewInteger(1)    ,     zyloruntime.NewInteger(2)    ,     zyloruntime.NewInteger(3)    }
+            var     elemento     interface{}     =     // TODO: Expresión no soportada: *ast.IndexExpression
+        }
+=== RUN   TestCollectionErrors/Invalid_slice_bounds
+    framework.go:60: Parser errors: [expected RIGHT_BRACKET, got COLON unexpected token RIGHT_BRACKET in prefix position expected '}', got EOF failed to parse function body]
+=== RUN   TestCollectionErrors/Access_non-existent_map_key
+    framework.go:71: Semantic errors: [ZYLO_ERR_003: Tipo incompatible - analysis:4:16 - índice debe ser entero
+          Esperado: esperado, Recibido: recibido
+          Sugerencia: Convierta el tipo explícitamente o cambie el tipo de la variable]
+=== RUN   TestCollectionErrors/Type_mismatch_in_collection
+    framework.go:41: Expected compilation to fail but it succeeded
+--- FAIL: TestCollectionErrors (1.01s)
+    --- FAIL: TestCollectionErrors/Index_out_of_bounds (0.54s)
+    --- FAIL: TestCollectionErrors/Negative_index_out_of_bounds (0.46s)
+    --- FAIL: TestCollectionErrors/Invalid_slice_bounds (0.00s)
+    --- FAIL: TestCollectionErrors/Access_non-existent_map_key (0.00s)
+    --- FAIL: TestCollectionErrors/Type_mismatch_in_collection (0.00s)
+=== RUN   TestCollectionFunctions
+=== RUN   TestCollectionFunctions/Length_function_on_lists
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestCollectionFunctionsLength_function_on_lists2388207466\001\main.go:31:145: undefined: zyloruntime.Len
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     short     interface{}     =     []interface{}{    zyloruntime.NewInteger(1)    ,     zyloruntime.NewInteger(2)    ,     zyloruntime.NewInteger(3)    }
+            var     long     interface{}     =     []interface{}{    zyloruntime.NewInteger(1)    ,     zyloruntime.NewInteger(2)    ,     zyloruntime.NewInteger(3)    ,     zyloruntime.NewInteger(4)    ,     zyloruntime.NewInteger(5)    ,     zyloruntime.NewInteger(6)    ,     zyloruntime.NewInteger(7)    ,     zyloruntime.NewInteger(8)    ,     zyloruntime.NewInteger(9)    ,     zyloruntime.NewInteger(10)    }
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    zyloruntime.NewString("short:")    )    ,     zyloruntime.ToZyloObject(    zyloruntime.Len(    zyloruntime.ToZyloObject(    short    )    )    )    ,     zyloruntime.ToZyloObject(    zyloruntime.NewString("long:")    )    ,     zyloruntime.ToZyloObject(    zyloruntime.Len(    zyloruntime.ToZyloObject(    long    )    )    )    )
+        }
+=== RUN   TestCollectionFunctions/Length_function_on_maps
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestCollectionFunctionsLength_function_on_maps1953687107\001\main.go:30:5: syntax error: unexpected keyword var, expected expression
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     map1     interface{}     =     // TODO: Expresión no soportada: *ast.BlockExpression
+            var     map2     interface{}     =     // TODO: Expresión no soportada: *ast.BlockExpression
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    zyloruntime.NewString("map1:")    )    ,     zyloruntime.ToZyloObject(    zyloruntime.Len(    zyloruntime.ToZyloObject(    map1    )    )    )    ,     zyloruntime.ToZyloObject(    zyloruntime.NewString("map2:")    )    ,     zyloruntime.ToZyloObject(    zyloruntime.Len(    zyloruntime.ToZyloObject(    map2    )    )    )    )
+        }
+=== RUN   TestCollectionFunctions/Processing_collections_with_functions
+    framework.go:112: Output mismatch:
+        Expected: "150"
+        Got: "0"
+--- FAIL: TestCollectionFunctions (2.05s)
+    --- FAIL: TestCollectionFunctions/Length_function_on_lists (0.46s)
+    --- FAIL: TestCollectionFunctions/Length_function_on_maps (0.46s)
+    --- FAIL: TestCollectionFunctions/Processing_collections_with_functions (1.13s)
+=== RUN   TestBasicIfStatements
+=== RUN   TestBasicIfStatements/If_statement_true
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestBasicIfStatementsIf_statement_true2160163788\001\main.go:30:24: undefined: zyloruntime.Operation
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     edad     interface{}     =     zyloruntime.NewInteger(20)
+            if     zyloruntime.Operation(    edad    ,     zyloruntime.NewInteger(18)    )     {
+                zyloruntime.Println(        zyloruntime.ToZyloObject(        zyloruntime.NewString("Mayor de edad")        )        )
+            }
+        }
+=== RUN   TestBasicIfStatements/If_statement_false_-_no_output
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestBasicIfStatementsIf_statement_false_-_no_output3553226037\001\main.go:30:24: undefined: zyloruntime.Operation
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     edad     interface{}     =     zyloruntime.NewInteger(15)
+            if     zyloruntime.Operation(    edad    ,     zyloruntime.NewInteger(18)    )     {
+                zyloruntime.Println(        zyloruntime.ToZyloObject(        zyloruntime.NewString("Mayor")        )        )
+            }
+        }
+=== RUN   TestBasicIfStatements/If-else_both_branches
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestBasicIfStatementsIf-else_both_branches3346906070\001\main.go:30:24: undefined: zyloruntime.Operation
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     edad     interface{}     =     zyloruntime.NewInteger(15)
+            if     zyloruntime.Operation(    edad    ,     zyloruntime.NewInteger(18)    )     {
+                zyloruntime.Println(        zyloruntime.ToZyloObject(        zyloruntime.NewString("Mayor")        )        )
+            }     else {
+                zyloruntime.Println(        zyloruntime.ToZyloObject(        zyloruntime.NewString("Menor")        )        )
+            }
+        }
+=== RUN   TestBasicIfStatements/If-else_true_branch
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestBasicIfStatementsIf-else_true_branch51115374\001\main.go:30:24: undefined: zyloruntime.Operation
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     edad     interface{}     =     zyloruntime.NewInteger(25)
+            if     zyloruntime.Operation(    edad    ,     zyloruntime.NewInteger(18)    )     {
+                zyloruntime.Println(        zyloruntime.ToZyloObject(        zyloruntime.NewString("Mayor")        )        )
+            }     else {
+                zyloruntime.Println(        zyloruntime.ToZyloObject(        zyloruntime.NewString("Menor")        )        )
+            }
+        }
+=== RUN   TestBasicIfStatements/If-elif-else_chain
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestBasicIfStatementsIf-elif-else_chain921506212\001\main.go:30:24: undefined: zyloruntime.Operation
+        C:\Users\Android\AppData\Local\Temp\TestBasicIfStatementsIf-elif-else_chain921506212\001\main.go:33:32: undefined: zyloruntime.Operation
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     edad     interface{}     =     zyloruntime.NewInteger(16)
+            if     zyloruntime.Operation(    edad    ,     zyloruntime.NewInteger(18)    )     {
+                zyloruntime.Println(        zyloruntime.ToZyloObject(        zyloruntime.NewString("Mayor")        )        )
+            }     else {
+                if         zyloruntime.Operation(        edad        ,         zyloruntime.NewInteger(16)        )         {
+                    zyloruntime.Println(            zyloruntime.ToZyloObject(            zyloruntime.NewString("Adolescente")            )            )
+                }         else {
+                    zyloruntime.Println(            zyloruntime.ToZyloObject(            zyloruntime.NewString("Menor")            )            )
+                }
+            }
+        }
+=== RUN   TestBasicIfStatements/Multiple_elif_conditions
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestBasicIfStatementsMultiple_elif_conditions2991195873\001\main.go:30:24: undefined: zyloruntime.Operation
+        C:\Users\Android\AppData\Local\Temp\TestBasicIfStatementsMultiple_elif_conditions2991195873\001\main.go:33:32: undefined: zyloruntime.Operation
+        C:\Users\Android\AppData\Local\Temp\TestBasicIfStatementsMultiple_elif_conditions2991195873\001\main.go:36:40: undefined: zyloruntime.Operation
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     score     interface{}     =     zyloruntime.NewInteger(85)
+            if     zyloruntime.Operation(    score    ,     zyloruntime.NewInteger(90)    )     {
+                zyloruntime.Println(        zyloruntime.ToZyloObject(        zyloruntime.NewString("A")        )        )
+            }     else {
+                if         zyloruntime.Operation(        score        ,         zyloruntime.NewInteger(80)        )         {
+                    zyloruntime.Println(            zyloruntime.ToZyloObject(            zyloruntime.NewString("B")            )            )
+                }         else {
+                    if             zyloruntime.Operation(            score            ,             zyloruntime.NewInteger(70)            )             {
+                        zyloruntime.Println(                zyloruntime.ToZyloObject(                zyloruntime.NewString("C")                )                )
+                    }             else {
+                        zyloruntime.Println(                zyloruntime.ToZyloObject(                zyloruntime.NewString("F")                )                )
+                    }
+                }
+            }
+        }
+=== RUN   TestBasicIfStatements/Complex_condition_in_if
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestBasicIfStatementsComplex_condition_in_if6330784\001\main.go:31:24: undefined: zyloruntime.Operation
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     x     interface{}     =     zyloruntime.NewInteger(5)
+            var     y     interface{}     =     zyloruntime.NewInteger(10)
+            if     zyloruntime.Operation(    zyloruntime.Operation(    x    ,     y    )    ,     zyloruntime.Operation(    x    ,     zyloruntime.NewInteger(0)    )    )     {
+                zyloruntime.Println(        zyloruntime.ToZyloObject(        zyloruntime.NewString("Valid range")        )        )
+            }
+        }
+--- FAIL: TestBasicIfStatements (5.17s)
+    --- FAIL: TestBasicIfStatements/If_statement_true (0.53s)
+    --- FAIL: TestBasicIfStatements/If_statement_false_-_no_output (0.42s)
+    --- FAIL: TestBasicIfStatements/If-else_both_branches (0.84s)
+    --- FAIL: TestBasicIfStatements/If-else_true_branch (0.73s)
+    --- FAIL: TestBasicIfStatements/If-elif-else_chain (0.83s)
+    --- FAIL: TestBasicIfStatements/Multiple_elif_conditions (0.56s)
+    --- FAIL: TestBasicIfStatements/Complex_condition_in_if (1.24s)
+=== RUN   TestWhileLoops
+=== RUN   TestWhileLoops/While_loop_basic
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestWhileLoopsWhile_loop_basic4290203159\001\main.go:29:13: declared and not used: contador
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     contador     interface{}     =     zyloruntime.NewInteger(0)
+            // TODO: Sentencia no soportada: *ast.WhileStatement
+        }
+=== RUN   TestWhileLoops/While_loop_zero_iterations
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestWhileLoopsWhile_loop_zero_iterations4153090609\001\main.go:29:13: declared and not used: contador
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     contador     interface{}     =     zyloruntime.NewInteger(5)
+            // TODO: Sentencia no soportada: *ast.WhileStatement
+        }
+=== RUN   TestWhileLoops/While_loop_with_complex_condition
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestWhileLoopsWhile_loop_with_complex_condition160978914\001\main.go:29:13: declared and not used: x
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     x     interface{}     =     zyloruntime.NewInteger(1)
+            // TODO: Sentencia no soportada: *ast.WhileStatement
+        }
+=== RUN   TestWhileLoops/While_loop_modifying_multiple_variables
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestWhileLoopsWhile_loop_modifying_multiple_variables3092808442\001\main.go:29:13: declared and not used: a
+        C:\Users\Android\AppData\Local\Temp\TestWhileLoopsWhile_loop_modifying_multiple_variables3092808442\001\main.go:30:13: declared and not used: b
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     a     interface{}     =     zyloruntime.NewInteger(0)
+            var     b     interface{}     =     zyloruntime.NewInteger(1)
+            // TODO: Sentencia no soportada: *ast.WhileStatement
+        }
+=== RUN   TestWhileLoops/While_loop_with_boolean_flag
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestWhileLoopsWhile_loop_with_boolean_flag553310453\001\main.go:29:13: declared and not used: continuar
+        C:\Users\Android\AppData\Local\Temp\TestWhileLoopsWhile_loop_with_boolean_flag553310453\001\main.go:30:13: declared and not used: count
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     continuar     interface{}     =     true
+            var     count     interface{}     =     zyloruntime.NewInteger(0)
+            // TODO: Sentencia no soportada: *ast.WhileStatement
+        }
+--- FAIL: TestWhileLoops (3.31s)
+    --- FAIL: TestWhileLoops/While_loop_basic (0.59s)
+    --- FAIL: TestWhileLoops/While_loop_zero_iterations (1.08s)
+    --- FAIL: TestWhileLoops/While_loop_with_complex_condition (0.52s)
+    --- FAIL: TestWhileLoops/While_loop_modifying_multiple_variables (0.66s)
+    --- FAIL: TestWhileLoops/While_loop_with_boolean_flag (0.45s)
+=== RUN   TestBreakStatements
+=== RUN   TestBreakStatements/Break_in_simple_while_loop
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestBreakStatementsBreak_in_simple_while_loop719623476\001\main.go:29:13: declared and not used: contador
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     contador     interface{}     =     zyloruntime.NewInteger(0)
+            // TODO: Sentencia no soportada: *ast.WhileStatement
+        }
+=== RUN   TestBreakStatements/Break_at_start_of_loop
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestBreakStatementsBreak_at_start_of_loop1732858306\001\main.go:29:13: declared and not used: x
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     x     interface{}     =     zyloruntime.NewInteger(1)
+            // TODO: Sentencia no soportada: *ast.WhileStatement
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    zyloruntime.NewString("End")    )    )
+        }
+=== RUN   TestBreakStatements/Break_with_complex_condition
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestBreakStatementsBreak_with_complex_condition1019552460\001\main.go:29:13: declared and not used: i
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     i     interface{}     =     zyloruntime.NewInteger(0)
+            // TODO: Sentencia no soportada: *ast.WhileStatement
+        }
+--- FAIL: TestBreakStatements (1.63s)
+    --- FAIL: TestBreakStatements/Break_in_simple_while_loop (0.53s)
+    --- FAIL: TestBreakStatements/Break_at_start_of_loop (0.62s)
+    --- FAIL: TestBreakStatements/Break_with_complex_condition (0.48s)
+=== RUN   TestContinueStatements
+=== RUN   TestContinueStatements/Continue_skips_iteration
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestContinueStatementsContinue_skips_iteration2632514888\001\main.go:29:13: declared and not used: contador
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     contador     interface{}     =     zyloruntime.NewInteger(0)
+            // TODO: Sentencia no soportada: *ast.WhileStatement
+        }
+=== RUN   TestContinueStatements/Continue_at_start_of_loop
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestContinueStatementsContinue_at_start_of_loop408455595\001\main.go:29:13: declared and not used: i
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     i     interface{}     =     zyloruntime.NewInteger(0)
+            // TODO: Sentencia no soportada: *ast.WhileStatement
+        }
+=== RUN   TestContinueStatements/Continue_with_complex_condition
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestContinueStatementsContinue_with_complex_condition84887218\001\main.go:29:13: declared and not used: x
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     x     interface{}     =     zyloruntime.NewInteger(0)
+            // TODO: Sentencia no soportada: *ast.WhileStatement
+        }
+--- FAIL: TestContinueStatements (1.32s)
+    --- FAIL: TestContinueStatements/Continue_skips_iteration (0.43s)
+    --- FAIL: TestContinueStatements/Continue_at_start_of_loop (0.41s)
+    --- FAIL: TestContinueStatements/Continue_with_complex_condition (0.48s)
+=== RUN   TestControlFlowErrors
+=== RUN   TestControlFlowErrors/Break_outside_loop_should_fail
+    framework.go:41: Expected compilation to fail but it succeeded
+=== RUN   TestControlFlowErrors/Continue_outside_loop_should_fail
+    framework.go:41: Expected compilation to fail but it succeeded
+=== RUN   TestControlFlowErrors/Break_in_function_without_loop_should_fail
+    framework.go:41: Expected compilation to fail but it succeeded
+=== RUN   TestControlFlowErrors/Nested_if_break_should_work
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestControlFlowErrorsNested_if_break_should_work1951146250\001\main.go:29:13: declared and not used: x
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     x     interface{}     =     zyloruntime.NewInteger(0)
+            // TODO: Sentencia no soportada: *ast.WhileStatement
+        }
+--- FAIL: TestControlFlowErrors (0.48s)
+    --- FAIL: TestControlFlowErrors/Break_outside_loop_should_fail (0.00s)
+    --- FAIL: TestControlFlowErrors/Continue_outside_loop_should_fail (0.00s)
+    --- FAIL: TestControlFlowErrors/Break_in_function_without_loop_should_fail (0.00s)
+    --- FAIL: TestControlFlowErrors/Nested_if_break_should_work (0.48s)
+=== RUN   TestArithmeticEdgeCases
+=== RUN   TestArithmeticEdgeCases/Division_by_zero
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestArithmeticEdgeCasesDivision_by_zero265366899\001\main.go:29:13: declared and not used: resultado
+        C:\Users\Android\AppData\Local\Temp\TestArithmeticEdgeCasesDivision_by_zero265366899\001\main.go:29:49: invalid operation: operator / not defined on zyloruntime.NewInteger(10) (value of type *zyloruntime.Integer)
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     resultado     interface{}     =     zyloruntime.NewInteger(10)     /     zyloruntime.NewInteger(0)
+        }
+=== RUN   TestArithmeticEdgeCases/Modulo_by_zero
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestArithmeticEdgeCasesModulo_by_zero2378495715\001\main.go:29:13: declared and not used: resultado
+        C:\Users\Android\AppData\Local\Temp\TestArithmeticEdgeCasesModulo_by_zero2378495715\001\main.go:29:49: invalid operation: operator % not defined on zyloruntime.NewInteger(10) (value of type *zyloruntime.Integer)
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     resultado     interface{}     =     zyloruntime.NewInteger(10)     %     zyloruntime.NewInteger(0)
+        }
+=== RUN   TestArithmeticEdgeCases/Very_large_integers
+=== RUN   TestArithmeticEdgeCases/Very_small_integers
+    framework.go:60: Parser errors: [lexer error: Invalid integer number.]
+=== RUN   TestArithmeticEdgeCases/Floating_point_precision
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestArithmeticEdgeCasesFloating_point_precision782545867\001\main.go:29:46: invalid operation: operator + not defined on zyloruntime.NewFloat(0.100000) (value of type *zyloruntime.Float)
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     result     interface{}     =     zyloruntime.NewFloat(0.100000)     +     zyloruntime.NewFloat(0.200000)
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    result    )    )
+        }
+=== RUN   TestArithmeticEdgeCases/Mixed_type_arithmetic
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestArithmeticEdgeCasesMixed_type_arithmetic3360768275\001\main.go:31:53: undefined: zyloruntime.Add
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     a     interface{}     =     zyloruntime.NewInteger(5)
+            var     b     interface{}     =     zyloruntime.NewFloat(3.140000)
+            var     c     interface{}     =     zyloruntime.Add(    a    ,     b    )
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    c    )    )
+        }
+--- FAIL: TestArithmeticEdgeCases (2.30s)
+    --- FAIL: TestArithmeticEdgeCases/Division_by_zero (0.40s)
+    --- FAIL: TestArithmeticEdgeCases/Modulo_by_zero (0.37s)
+    --- PASS: TestArithmeticEdgeCases/Very_large_integers (0.60s)
+    --- FAIL: TestArithmeticEdgeCases/Very_small_integers (0.00s)
+    --- FAIL: TestArithmeticEdgeCases/Floating_point_precision (0.38s)
+    --- FAIL: TestArithmeticEdgeCases/Mixed_type_arithmetic (0.55s)
+=== RUN   TestVariableEdgeCases
+=== RUN   TestVariableEdgeCases/Undefined_variable
+    framework.go:41: Expected compilation to fail but it succeeded
+=== RUN   TestVariableEdgeCases/Variable_used_before_declaration
+    framework.go:41: Expected compilation to fail but it succeeded
+=== RUN   TestVariableEdgeCases/Shadowing_with_different_types
+    framework.go:41: Expected compilation to fail but it succeeded
+=== RUN   TestVariableEdgeCases/Very_long_variable_names
+=== RUN   TestVariableEdgeCases/Variables_starting_with_numbers_should_fail
+    framework.go:41: Expected compilation to fail but it succeeded
+=== RUN   TestVariableEdgeCases/Empty_identifier_should_fail
+--- FAIL: TestVariableEdgeCases (0.61s)
+    --- FAIL: TestVariableEdgeCases/Undefined_variable (0.00s)
+    --- FAIL: TestVariableEdgeCases/Variable_used_before_declaration (0.00s)
+    --- FAIL: TestVariableEdgeCases/Shadowing_with_different_types (0.00s)
+    --- PASS: TestVariableEdgeCases/Very_long_variable_names (0.61s)
+    --- FAIL: TestVariableEdgeCases/Variables_starting_with_numbers_should_fail (0.00s)
+    --- PASS: TestVariableEdgeCases/Empty_identifier_should_fail (0.00s)
+=== RUN   TestTypeMismatches
+=== RUN   TestTypeMismatches/String_+_int_should_work_or_convert
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestTypeMismatchesString_+_int_should_work_or_convert2609350079\001\main.go:29:58: undefined: zyloruntime.Add
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     result     interface{}     =     zyloruntime.Add(    zyloruntime.NewString("hello")    ,     zyloruntime.NewInteger(42)    )
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    result    )    )
+        }
+=== RUN   TestTypeMismatches/Boolean_to_int_conversion
+    framework.go:41: Expected compilation to fail but it succeeded
+=== RUN   TestTypeMismatches/Invalid_type_operation
+    framework.go:41: Expected compilation to fail but it succeeded
+=== RUN   TestTypeMismatches/Float_to_int_conversion_in_operation
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestTypeMismatchesFloat_to_int_conversion_in_operation2297343364\001\main.go:31:58: undefined: zyloruntime.Add
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     x     interface{}     =     zyloruntime.NewInteger(5)
+            var     y     interface{}     =     zyloruntime.NewFloat(3.140000)
+            var     result     interface{}     =     zyloruntime.Add(    x    ,     y    )
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    result    )    )
+        }
+--- FAIL: TestTypeMismatches (0.86s)
+    --- FAIL: TestTypeMismatches/String_+_int_should_work_or_convert (0.41s)
+    --- FAIL: TestTypeMismatches/Boolean_to_int_conversion (0.00s)
+    --- FAIL: TestTypeMismatches/Invalid_type_operation (0.00s)
+    --- FAIL: TestTypeMismatches/Float_to_int_conversion_in_operation (0.45s)
+=== RUN   TestCollectionEdgeCases
+=== RUN   TestCollectionEdgeCases/Index_out_of_range
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestCollectionEdgeCasesIndex_out_of_range3212194595\001\main.go:31:1: syntax error: unexpected }, expected expression
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     lista     interface{}     =     []interface{}{    zyloruntime.NewInteger(1)    ,     zyloruntime.NewInteger(2)    ,     zyloruntime.NewInteger(3)    }
+            var     elemento     interface{}     =     // TODO: Expresión no soportada: *ast.IndexExpression
+        }
+=== RUN   TestCollectionEdgeCases/Negative_index_out_of_range
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestCollectionEdgeCasesNegative_index_out_of_range2950107692\001\main.go:31:1: syntax error: unexpected }, expected expression
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     lista     interface{}     =     []interface{}{    zyloruntime.NewInteger(1)    ,     zyloruntime.NewInteger(2)    ,     zyloruntime.NewInteger(3)    }
+            var     elemento     interface{}     =     // TODO: Expresión no soportada: *ast.IndexExpression
+        }
+=== RUN   TestCollectionEdgeCases/Empty_collection_access
+    framework.go:71: Semantic errors: [ZYLO_ERR_003: Tipo incompatible - analysis:5:38 - índice debe ser entero
+          Esperado: esperado, Recibido: recibido
+          Sugerencia: Convierta el tipo explícitamente o cambie el tipo de la variable]
+=== RUN   TestCollectionEdgeCases/Nested_out_of_bounds
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestCollectionEdgeCasesNested_out_of_bounds2114899270\001\main.go:29:13: declared and not used: nested
+        C:\Users\Android\AppData\Local\Temp\TestCollectionEdgeCasesNested_out_of_bounds2114899270\001\main.go:30:13: declared and not used: item
+        C:\Users\Android\AppData\Local\Temp\TestCollectionEdgeCasesNested_out_of_bounds2114899270\001\main.go:31:5: zyloruntime.Println(zyloruntime.ToZyloObject(item)) (no value) used as value
+        C:\Users\Android\AppData\Local\Temp\TestCollectionEdgeCasesNested_out_of_bounds2114899270\001\main.go:31:58: undefined: item
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     nested     interface{}     =     []interface{}{    []interface{}{    zyloruntime.NewInteger(1)    ,     zyloruntime.NewInteger(2)    }    ,     []interface{}{    zyloruntime.NewInteger(3)    ,     zyloruntime.NewInteger(4)    }    }
+            var     item     interface{}     =     // TODO: Expresión no soportada: *ast.IndexExpression
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    item    )    )
+        }
+=== RUN   TestCollectionEdgeCases/Map_with_complex_keys
+    framework.go:41: Expected compilation to fail but it succeeded
+--- FAIL: TestCollectionEdgeCases (1.27s)
+    --- FAIL: TestCollectionEdgeCases/Index_out_of_range (0.39s)
+    --- FAIL: TestCollectionEdgeCases/Negative_index_out_of_range (0.38s)
+    --- FAIL: TestCollectionEdgeCases/Empty_collection_access (0.00s)
+    --- FAIL: TestCollectionEdgeCases/Nested_out_of_bounds (0.50s)
+    --- FAIL: TestCollectionEdgeCases/Map_with_complex_keys (0.00s)
+=== RUN   TestFunctionEdgeCases
+=== RUN   TestFunctionEdgeCases/Function_with_too_many_parameters
+    framework.go:41: Expected compilation to fail but it succeeded
+=== RUN   TestFunctionEdgeCases/Function_with_too_few_parameters
+    framework.go:41: Expected compilation to fail but it succeeded
+=== RUN   TestFunctionEdgeCases/Recursive_function_stack_overflow_risk
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestFunctionEdgeCasesRecursive_function_stack_overflow_risk1644330295\001\main.go:29:50: undefined: zyloruntime.Add
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func recursive(n interface{}) interface{} {
+            return         recursive    (    zyloruntime.Add(    n    ,     zyloruntime.NewInteger(1)    )    )
+        }
+        func main() {
+            recursive    (    zyloruntime.NewInteger(0)    )
+        }
+=== RUN   TestFunctionEdgeCases/Function_returning_wrong_type
+    framework.go:41: Expected compilation to fail but it succeeded
+=== RUN   TestFunctionEdgeCases/Void_function_with_implicit_return
+    framework.go:41: Expected compilation to fail but it succeeded
+--- FAIL: TestFunctionEdgeCases (0.40s)
+    --- FAIL: TestFunctionEdgeCases/Function_with_too_many_parameters (0.00s)
+    --- FAIL: TestFunctionEdgeCases/Function_with_too_few_parameters (0.00s)
+    --- FAIL: TestFunctionEdgeCases/Recursive_function_stack_overflow_risk (0.40s)
+    --- FAIL: TestFunctionEdgeCases/Function_returning_wrong_type (0.00s)
+    --- FAIL: TestFunctionEdgeCases/Void_function_with_implicit_return (0.00s)
+=== RUN   TestUnicodeAndEncoding
+=== RUN   TestUnicodeAndEncoding/Unicode_strings
+=== RUN   TestUnicodeAndEncoding/Unicode_variable_names
+=== RUN   TestUnicodeAndEncoding/Emoji_in_strings
+=== RUN   TestUnicodeAndEncoding/Unicode_operators_in_comments
+--- PASS: TestUnicodeAndEncoding (2.48s)
+    --- PASS: TestUnicodeAndEncoding/Unicode_strings (0.76s)
+    --- PASS: TestUnicodeAndEncoding/Unicode_variable_names (0.58s)
+    --- PASS: TestUnicodeAndEncoding/Emoji_in_strings (0.58s)
+    --- PASS: TestUnicodeAndEncoding/Unicode_operators_in_comments (0.57s)
+=== RUN   TestPrecedenceAndAssociativity
+=== RUN   TestPrecedenceAndAssociativity/Complex_expression_precedence
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestPrecedenceAndAssociativityComplex_expression_precedence4097100463\001\main.go:29:70: undefined: zyloruntime.Subtract
+        C:\Users\Android\AppData\Local\Temp\TestPrecedenceAndAssociativityComplex_expression_precedence4097100463\001\main.go:29:95: undefined: zyloruntime.Add
+        C:\Users\Android\AppData\Local\Temp\TestPrecedenceAndAssociativityComplex_expression_precedence4097100463\001\main.go:29:138: invalid operation: operator * not defined on zyloruntime.NewInteger(3) (value of type *zyloruntime.Integer)
+        C:\Users\Android\AppData\Local\Temp\TestPrecedenceAndAssociativityComplex_expression_precedence4097100463\001\main.go:29:214: invalid operation: operator / not defined on zyloruntime.NewInteger(5) (value of type *zyloruntime.Integer)
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    zyloruntime.Subtract(    zyloruntime.Add(    zyloruntime.NewInteger(2)    ,     zyloruntime.NewInteger(3)     *     zyloruntime.NewInteger(4)    )    ,     zyloruntime.NewInteger(5)     /     zyloruntime.NewInteger(2)    )    )    )
+        }
+=== RUN   TestPrecedenceAndAssociativity/Logical_and_comparison_precedence
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestPrecedenceAndAssociativityLogical_and_comparison_precedence1811331290\001\main.go:29:70: undefined: zyloruntime.Operation
+        C:\Users\Android\AppData\Local\Temp\TestPrecedenceAndAssociativityLogical_and_comparison_precedence1811331290\001\main.go:29:110: invalid operation: zyloruntime.NewInteger(5) > zyloruntime.NewInteger(3) (operator > not defined on pointer)
+        C:\Users\Android\AppData\Local\Temp\TestPrecedenceAndAssociativityLogical_and_comparison_precedence1811331290\001\main.go:29:181: invalid operation: zyloruntime.NewInteger(2) < zyloruntime.NewInteger(4) (operator < not defined on pointer)
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    zyloruntime.Operation(    zyloruntime.Operation(    zyloruntime.NewInteger(5)     >     zyloruntime.NewInteger(3)    ,     zyloruntime.NewInteger(2)     <     zyloruntime.NewInteger(4)    )    ,     true    )    )    )
+        }
+=== RUN   TestPrecedenceAndAssociativity/Mixed_operators_precedence
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestPrecedenceAndAssociativityMixed_operators_precedence1308920172\001\main.go:29:70: undefined: zyloruntime.Add
+        C:\Users\Android\AppData\Local\Temp\TestPrecedenceAndAssociativityMixed_operators_precedence1308920172\001\main.go:29:78: invalid operation: operator * not defined on zyloruntime.NewInteger(2) (value of type *zyloruntime.Integer)
+        C:\Users\Android\AppData\Local\Temp\TestPrecedenceAndAssociativityMixed_operators_precedence1308920172\001\main.go:29:149: invalid operation: operator % not defined on zyloruntime.NewInteger(4) (value of type *zyloruntime.Integer)
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    zyloruntime.Add(    zyloruntime.NewInteger(2)     *     zyloruntime.NewInteger(3)    ,     zyloruntime.NewInteger(4)     %     zyloruntime.NewInteger(5)    )    )    )
+        }
+=== RUN   TestPrecedenceAndAssociativity/Parentheses_overriding_precedence
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestPrecedenceAndAssociativityParentheses_overriding_precedence866586648\001\main.go:29:70: undefined: zyloruntime.Multiply
+        C:\Users\Android\AppData\Local\Temp\TestPrecedenceAndAssociativityParentheses_overriding_precedence866586648\001\main.go:29:83: invalid operation: operator + not defined on zyloruntime.NewInteger(2) (value of type *zyloruntime.Integer)
+        C:\Users\Android\AppData\Local\Temp\TestPrecedenceAndAssociativityParentheses_overriding_precedence866586648\001\main.go:29:154: invalid operation: operator - not defined on zyloruntime.NewInteger(4) (value of type *zyloruntime.Integer)
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    zyloruntime.Multiply(    zyloruntime.NewInteger(2)     +     zyloruntime.NewInteger(3)    ,     zyloruntime.NewInteger(4)     -     zyloruntime.NewInteger(1)    )    )    )
+        }
+--- FAIL: TestPrecedenceAndAssociativity (1.48s)
+    --- FAIL: TestPrecedenceAndAssociativity/Complex_expression_precedence (0.40s)
+    --- FAIL: TestPrecedenceAndAssociativity/Logical_and_comparison_precedence (0.37s)
+    --- FAIL: TestPrecedenceAndAssociativity/Mixed_operators_precedence (0.34s)
+    --- FAIL: TestPrecedenceAndAssociativity/Parentheses_overriding_precedence (0.37s)
+=== RUN   TestEmptyAndMinimalPrograms
+=== RUN   TestEmptyAndMinimalPrograms/Empty_program
+=== RUN   TestEmptyAndMinimalPrograms/Program_with_only_whitespace
+=== RUN   TestEmptyAndMinimalPrograms/Program_with_only_comments
+=== RUN   TestEmptyAndMinimalPrograms/Minimal_program_with_main
+=== RUN   TestEmptyAndMinimalPrograms/Program_with_only_variable_declaration
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestEmptyAndMinimalProgramsProgram_with_only_variable_declaration1687310388\001\main.go:29:58: undefined: x
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    x    )    )
+        }
+--- FAIL: TestEmptyAndMinimalPrograms (2.03s)
+    --- PASS: TestEmptyAndMinimalPrograms/Empty_program (0.43s)
+    --- PASS: TestEmptyAndMinimalPrograms/Program_with_only_whitespace (0.43s)
+    --- PASS: TestEmptyAndMinimalPrograms/Program_with_only_comments (0.39s)
+    --- PASS: TestEmptyAndMinimalPrograms/Minimal_program_with_main (0.41s)
+    --- FAIL: TestEmptyAndMinimalPrograms/Program_with_only_variable_declaration (0.37s)
+=== RUN   TestDeepNesting
+=== RUN   TestDeepNesting/Deeply_nested_expressions
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestDeepNestingDeeply_nested_expressions3623209570\001\main.go:29:70: undefined: zyloruntime.Divide
+        C:\Users\Android\AppData\Local\Temp\TestDeepNestingDeeply_nested_expressions3623209570\001\main.go:29:93: undefined: zyloruntime.Subtract
+        C:\Users\Android\AppData\Local\Temp\TestDeepNestingDeeply_nested_expressions3623209570\001\main.go:29:118: undefined: zyloruntime.Multiply
+        C:\Users\Android\AppData\Local\Temp\TestDeepNestingDeeply_nested_expressions3623209570\001\main.go:29:131: invalid operation: operator + not defined on zyloruntime.NewInteger(5) (value of type *zyloruntime.Integer)
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    zyloruntime.Divide(    zyloruntime.Subtract(    zyloruntime.Multiply(    zyloruntime.NewInteger(5)     +     zyloruntime.NewInteger(3)    ,     zyloruntime.NewInteger(2)    )    ,     zyloruntime.NewInteger(4)    )    ,     zyloruntime.NewInteger(2)    )    )    )
+        }
+=== RUN   TestDeepNesting/Deeply_nested_function_calls
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestDeepNestingDeeply_nested_function_calls1373312049\001\main.go:29:32: undefined: zyloruntime.Add
+        C:\Users\Android\AppData\Local\Temp\TestDeepNestingDeeply_nested_function_calls1373312049\001\main.go:32:32: undefined: zyloruntime.Multiply
+        C:\Users\Android\AppData\Local\Temp\TestDeepNestingDeeply_nested_function_calls1373312049\001\main.go:35:32: undefined: zyloruntime.Subtract
+        C:\Users\Android\AppData\Local\Temp\TestDeepNestingDeeply_nested_function_calls1373312049\001\main.go:38:32: undefined: zyloruntime.Divide
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func a(x interface{}) interface{} {
+            return         zyloruntime.Add(    x    ,     zyloruntime.NewInteger(1)    )
+        }
+        func b(x interface{}) interface{} {
+            return         zyloruntime.Multiply(    x    ,     zyloruntime.NewInteger(2)    )
+        }
+        func c(x interface{}) interface{} {
+            return         zyloruntime.Subtract(    x    ,     zyloruntime.NewInteger(3)    )
+        }
+        func d(x interface{}) interface{} {
+            return         zyloruntime.Divide(    x    ,     zyloruntime.NewInteger(2)    )
+        }
+        func main() {
+            var     result     interface{}     =     d    (    c    (    b    (    a    (    zyloruntime.NewInteger(5)    )    )    )    )
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    result    )    )
+        }
+=== RUN   TestDeepNesting/Deep_recursion_call_stack
+    framework.go:60: Parser errors: [expected '}', got EOF failed to parse function body]
+=== RUN   TestDeepNesting/Nested_loops
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestDeepNestingNested_loops1301578821\001\main.go:29:13: declared and not used: counter
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     counter     interface{}     =     zyloruntime.NewInteger(0)
+            // TODO: Sentencia no soportada: *ast.WhileStatement
+        }
+--- FAIL: TestDeepNesting (1.15s)
+    --- FAIL: TestDeepNesting/Deeply_nested_expressions (0.38s)
+    --- FAIL: TestDeepNesting/Deeply_nested_function_calls (0.39s)
+    --- FAIL: TestDeepNesting/Deep_recursion_call_stack (0.00s)
+    --- FAIL: TestDeepNesting/Nested_loops (0.38s)
+=== RUN   TestLargePrograms
+=== RUN   TestLargePrograms/Large_array_processing
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestLargeProgramsLarge_array_processing3685380733\001\main.go:29:13: declared and not used: large
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     large     interface{}     =     []interface{}{    zyloruntime.NewInteger(1)    ,     zyloruntime.NewInteger(2)    ,     zyloruntime.NewInteger(3)    ,     zyloruntime.NewInteger(4)    ,     zyloruntime.NewInteger(5)    ,     zyloruntime.NewInteger(6)    ,     zyloruntime.NewInteger(7)    ,     zyloruntime.NewInteger(8)    ,     zyloruntime.NewInteger(9)    ,     zyloruntime.NewInteger(10)    ,     zyloruntime.NewInteger(11)    ,     zyloruntime.NewInteger(12)    ,     zyloruntime.NewInteger(13)    ,     zyloruntime.NewInteger(14)    ,     zyloruntime.NewInteger(15)    ,     zyloruntime.NewInteger(16)    ,     zyloruntime.NewInteger(17)    ,     zyloruntime.NewInteger(18)    ,     zyloruntime.NewInteger(19)    ,     zyloruntime.NewInteger(20)    }
+            var     sum     interface{}     =     zyloruntime.NewInteger(0)
+            // TODO: Sentencia no soportada: *ast.ForInStatement
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    sum    )    )
+        }
+=== RUN   TestLargePrograms/Many_variables
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestLargeProgramsMany_variables4007443759\001\main.go:39:57: undefined: zyloruntime.Add
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     a1     interface{}     =     zyloruntime.NewInteger(1)
+            var     a2     interface{}     =     zyloruntime.NewInteger(2)
+            var     a3     interface{}     =     zyloruntime.NewInteger(3)
+            var     a4     interface{}     =     zyloruntime.NewInteger(4)
+            var     a5     interface{}     =     zyloruntime.NewInteger(5)
+            var     a6     interface{}     =     zyloruntime.NewInteger(6)
+            var     a7     interface{}     =     zyloruntime.NewInteger(7)
+            var     a8     interface{}     =     zyloruntime.NewInteger(8)
+            var     a9     interface{}     =     zyloruntime.NewInteger(9)
+            var     a10     interface{}     =     zyloruntime.NewInteger(10)
+            var     total     interface{}     =     zyloruntime.Add(    zyloruntime.Add(    zyloruntime.Add(    zyloruntime.Add(    zyloruntime.Add(    zyloruntime.Add(    zyloruntime.Add(    zyloruntime.Add(    zyloruntime.Add(    a1    ,     a2    )    ,     a3    )    ,     a4    )    ,     a5    )    ,     a6    )    ,     a7    )    ,     a8    )    ,     a9    )    ,     a10    )
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    total    )    )
+        }
+--- FAIL: TestLargePrograms (0.70s)
+    --- FAIL: TestLargePrograms/Large_array_processing (0.32s)
+    --- FAIL: TestLargePrograms/Many_variables (0.37s)
+=== RUN   TestWeirdSyntax
+=== RUN   TestWeirdSyntax/Extreme_spacing
+    framework.go:60: Parser errors: [expected function name, got NEWLINE no prefix parse function for DOT found expected RIGHT_PAREN, got NEWLINE unexpected token RIGHT_PAREN in prefix position expected '}', got EOF]
+=== RUN   TestWeirdSyntax/Mixed_quote_types_in_strings_(should_be_invalid)
+    framework.go:41: Expected compilation to fail but it succeeded
+=== RUN   TestWeirdSyntax/Invalid_escape_sequences
+    framework.go:41: Expected compilation to fail but it succeeded
+--- FAIL: TestWeirdSyntax (0.00s)
+    --- FAIL: TestWeirdSyntax/Extreme_spacing (0.00s)
+    --- FAIL: TestWeirdSyntax/Mixed_quote_types_in_strings_(should_be_invalid) (0.00s)
+    --- FAIL: TestWeirdSyntax/Invalid_escape_sequences (0.00s)
+=== RUN   TestBasicFunctions
+=== RUN   TestBasicFunctions/Function_with_return_value
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestBasicFunctionsFunction_with_return_value3425777689\001\main.go:29:32: undefined: zyloruntime.Add
+        C:\Users\Android\AppData\Local\Temp\TestBasicFunctionsFunction_with_return_value3425777689\001\main.go:32:63: cannot use zyloruntime.NewInteger(5) (value of type *zyloruntime.Integer) as int64 value in argument to sumar
+        C:\Users\Android\AppData\Local\Temp\TestBasicFunctionsFunction_with_return_value3425777689\001\main.go:32:98: cannot use zyloruntime.NewInteger(3) (value of type *zyloruntime.Integer) as int64 value in argument to sumar
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func sumar(a int64, b int64) interface{} {
+            return         zyloruntime.Add(    a    ,     b    )
+        }
+        func main() {
+            var     resultado     interface{}     =     sumar    (    zyloruntime.NewInteger(5)    ,     zyloruntime.NewInteger(3)    )
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    resultado    )    )
+        }
+=== RUN   TestBasicFunctions/Function_with_type_inference
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestBasicFunctionsFunction_with_type_inference3108162964\001\main.go:29:32: undefined: zyloruntime.Multiply
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func multiplicar(x interface{}, y interface{}) interface{} {
+            return         zyloruntime.Multiply(    x    ,     y    )
+        }
+        func main() {
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    multiplicar    (    zyloruntime.NewInteger(4)    ,     zyloruntime.NewInteger(5)    )    )    )
+        }
+=== RUN   TestBasicFunctions/Void_function
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestBasicFunctionsVoid_function1239427337\001\main.go:32:21: cannot use zyloruntime.NewString("Wilson") (value of type *zyloruntime.String) as string value in argument to saludar
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func saludar(nombre string) {
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    zyloruntime.NewString("Hola")    )    ,     zyloruntime.ToZyloObject(    nombre    )    )
+        }
+        func main() {
+            saludar    (    zyloruntime.NewString("Wilson")    )
+        }
+=== RUN   TestBasicFunctions/Function_with_multiple_parameters
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestBasicFunctionsFunction_with_multiple_parameters1520429614\001\main.go:29:32: undefined: zyloruntime.Add
+        C:\Users\Android\AppData\Local\Temp\TestBasicFunctionsFunction_with_multiple_parameters1520429614\001\main.go:29:63: undefined: zyloruntime.Multiply
+        C:\Users\Android\AppData\Local\Temp\TestBasicFunctionsFunction_with_multiple_parameters1520429614\001\main.go:32:75: cannot use zyloruntime.NewInteger(2) (value of type *zyloruntime.Integer) as int64 value in argument to calcular
+        C:\Users\Android\AppData\Local\Temp\TestBasicFunctionsFunction_with_multiple_parameters1520429614\001\main.go:32:110: cannot use zyloruntime.NewInteger(3) (value of type *zyloruntime.Integer) as int64 value in argument to calcular
+        C:\Users\Android\AppData\Local\Temp\TestBasicFunctionsFunction_with_multiple_parameters1520429614\001\main.go:32:145: cannot use zyloruntime.NewInteger(4) (value of type *zyloruntime.Integer) as int64 value in argument to calcular
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func calcular(a int64, b int64, c int64) interface{} {
+            return         zyloruntime.Add(    a    ,     zyloruntime.Multiply(    b    ,     c    )    )
+        }
+        func main() {
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    calcular    (    zyloruntime.NewInteger(2)    ,     zyloruntime.NewInteger(3)    ,     zyloruntime.NewInteger(4)    )    )    )
+        }
+=== RUN   TestBasicFunctions/Function_with_mixed_types
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestBasicFunctionsFunction_with_mixed_types134011604\001\main.go:29:32: undefined: zyloruntime.Add
+        C:\Users\Android\AppData\Local\Temp\TestBasicFunctionsFunction_with_mixed_types134011604\001\main.go:29:181: cannot convert zyloruntime.ToZyloObject(edad) (value of interface type zyloruntime.ZyloObject) to type zyloruntime.String
+        C:\Users\Android\AppData\Local\Temp\TestBasicFunctionsFunction_with_mixed_types134011604\001\main.go:29: cannot convert zyloruntime.ToZyloObject(activo) (value of interface type zyloruntime.ZyloObject) to type zyloruntime.String
+        C:\Users\Android\AppData\Local\Temp\TestBasicFunctionsFunction_with_mixed_types134011604\001\main.go:32:71: cannot use zyloruntime.NewString("Ana") (value of type *zyloruntime.String) as string value in argument to info
+        C:\Users\Android\AppData\Local\Temp\TestBasicFunctionsFunction_with_mixed_types134011604\001\main.go:32:109: cannot use zyloruntime.NewInteger(25) (value of type *zyloruntime.Integer) as int64 value in argument to info
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func info(nombre string, edad int64, activo bool) interface{} {
+            return         zyloruntime.Add(    zyloruntime.Add(    zyloruntime.Add(    zyloruntime.Add(    nombre    ,     zyloruntime.NewString(" (")    )    ,     zyloruntime.String(    zyloruntime.ToZyloObject(    edad    )    )    )    ,     zyloruntime.NewString(") ")    )    ,     zyloruntime.String(    zyloruntime.ToZyloObject(    activo    )    )    )
+        }
+        func main() {
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    info    (    zyloruntime.NewString("Ana")    ,     zyloruntime.NewInteger(25)    ,     true    )    )    )
+        }
+=== RUN   TestBasicFunctions/Function_returning_different_types
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestBasicFunctionsFunction_returning_different_types2937209318\001\main.go:29:24: undefined: zyloruntime.Equals
+        C:\Users\Android\AppData\Local\Temp\TestBasicFunctionsFunction_returning_different_types2937209318\001\main.go:32:32: undefined: zyloruntime.Equals
+        C:\Users\Android\AppData\Local\Temp\TestBasicFunctionsFunction_returning_different_types2937209318\001\main.go:35:40: undefined: zyloruntime.Equals
+        C:\Users\Android\AppData\Local\Temp\TestBasicFunctionsFunction_returning_different_types2937209318\001\main.go:44:75: cannot use zyloruntime.NewString("int") (value of type *zyloruntime.String) as string value in argument to getValue
+        C:\Users\Android\AppData\Local\Temp\TestBasicFunctionsFunction_returning_different_types2937209318\001\main.go:44:169: cannot use zyloruntime.NewString("float") (value of type *zyloruntime.String) as string value in argument to getValue
+        C:\Users\Android\AppData\Local\Temp\TestBasicFunctionsFunction_returning_different_types2937209318\001\main.go:44: cannot use zyloruntime.NewString("string") (value of type *zyloruntime.String) as string value in argument to getValue
+        C:\Users\Android\AppData\Local\Temp\TestBasicFunctionsFunction_returning_different_types2937209318\001\main.go:44: cannot use zyloruntime.NewString("bool") (value of type *zyloruntime.String) as string value in argument to getValue
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func getValue(tipo string) interface{} {
+            if     zyloruntime.Equals(    tipo    ,     zyloruntime.NewString("int")    )     {
+                return                 zyloruntime.NewInteger(42)
+            }     else {
+                if         zyloruntime.Equals(        tipo        ,         zyloruntime.NewString("float")        )         {
+                    return                         zyloruntime.NewFloat(3.140000)
+                }         else {
+                    if             zyloruntime.Equals(            tipo            ,             zyloruntime.NewString("string")            )             {
+                        return                                 zyloruntime.NewString("hello")
+                    }             else {
+                        return                                 true
+                    }
+                }
+            }
+        }
+        func main() {
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    getValue    (    zyloruntime.NewString("int")    )    )    ,     zyloruntime.ToZyloObject(    getValue    (    zyloruntime.NewString("float")    )    )    ,     zyloruntime.ToZyloObject(    getValue    (    zyloruntime.NewString("string")    )    )    ,     zyloruntime.ToZyloObject(    getValue    (    zyloruntime.NewString("bool")    )    )    )
+        }
+--- FAIL: TestBasicFunctions (2.12s)
+    --- FAIL: TestBasicFunctions/Function_with_return_value (0.35s)
+    --- FAIL: TestBasicFunctions/Function_with_type_inference (0.36s)
+    --- FAIL: TestBasicFunctions/Void_function (0.36s)
+    --- FAIL: TestBasicFunctions/Function_with_multiple_parameters (0.34s)
+    --- FAIL: TestBasicFunctions/Function_with_mixed_types (0.38s)
+    --- FAIL: TestBasicFunctions/Function_returning_different_types (0.34s)
+=== RUN   TestHigherOrderFunctions
+=== RUN   TestHigherOrderFunctions/Function_taking_function_parameter
+    framework.go:60: Parser errors: [expected RIGHT_PAREN, got FUNC failed to parse function parameters expected function name, got RIGHT_PAREN RETURN token is not expected in expression context at Token(Type: RETURN, Lexeme: 'return', Literal: <nil>, Pos: 3:5-3:10) expected '}', got EOF]
+=== RUN   TestHigherOrderFunctions/Anonymous_function
+    framework.go:60: Parser errors: [expected '(' after function name, got IDENTIFIER unexpected token RIGHT_PAREN in prefix position]
+=== RUN   TestHigherOrderFunctions/Function_returning_function
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestHigherOrderFunctionsFunction_returning_function1352028011\001\main.go:29:10: syntax error: unexpected name multiplicar, expected (
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func crear_multiplicador(factor int64) interface{} {
+            func multiplicar(    x interface{}    ) interface{} {
+                return                 zyloruntime.Multiply(        x        ,         factor        )
+            }
+            return         multiplicar
+        }
+        func main() {
+            var     duplicar     interface{}     =     crear_multiplicador    (    zyloruntime.NewInteger(2)    )
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    duplicar    (    zyloruntime.NewInteger(7)    )    )    )
+        }
+=== RUN   TestHigherOrderFunctions/Chain_of_higher-order_functions
+    framework.go:60: Parser errors: [expected RIGHT_PAREN, got FUNC failed to parse function parameters expected function name, got RIGHT_PAREN RETURN token is not expected in expression context at Token(Type: RETURN, Lexeme: 'return', Literal: <nil>, Pos: 3:5-3:10) expected '}', got EOF]
+=== RUN   TestHigherOrderFunctions/Anonymous_function_with_closure
+    framework.go:60: Parser errors: [expected '(' after function name, got IDENTIFIER unexpected token RIGHT_PAREN in prefix position]
+--- FAIL: TestHigherOrderFunctions (0.35s)
+    --- FAIL: TestHigherOrderFunctions/Function_taking_function_parameter (0.00s)
+    --- FAIL: TestHigherOrderFunctions/Anonymous_function (0.00s)
+    --- FAIL: TestHigherOrderFunctions/Function_returning_function (0.35s)
+    --- FAIL: TestHigherOrderFunctions/Chain_of_higher-order_functions (0.00s)
+    --- FAIL: TestHigherOrderFunctions/Anonymous_function_with_closure (0.00s)
+=== RUN   TestRecursion
+=== RUN   TestRecursion/Simple_recursion_-_factorial
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestRecursionSimple_recursion_-_factorial2181791659\001\main.go:29:24: undefined: zyloruntime.Operation
+        C:\Users\Android\AppData\Local\Temp\TestRecursionSimple_recursion_-_factorial2181791659\001\main.go:32:32: undefined: zyloruntime.Multiply
+        C:\Users\Android\AppData\Local\Temp\TestRecursionSimple_recursion_-_factorial2181791659\001\main.go:32:86: undefined: zyloruntime.Subtract
+        C:\Users\Android\AppData\Local\Temp\TestRecursionSimple_recursion_-_factorial2181791659\001\main.go:35:76: cannot use zyloruntime.NewInteger(5) (value of type *zyloruntime.Integer) as int64 value in argument to factorial
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func factorial(n int64) interface{} {
+            if     zyloruntime.Operation(    n    ,     zyloruntime.NewInteger(1)    )     {
+                return                 zyloruntime.NewInteger(1)
+            }
+            return         zyloruntime.Multiply(    n    ,     factorial    (    zyloruntime.Subtract(    n    ,     zyloruntime.NewInteger(1)    )    )    )
+        }
+        func main() {
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    factorial    (    zyloruntime.NewInteger(5)    )    )    )
+        }
+=== RUN   TestRecursion/Fibonacci_recursion
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestRecursionFibonacci_recursion1849592961\001\main.go:29:24: undefined: zyloruntime.Operation
+        C:\Users\Android\AppData\Local\Temp\TestRecursionFibonacci_recursion1849592961\001\main.go:32:32: undefined: zyloruntime.Add
+        C:\Users\Android\AppData\Local\Temp\TestRecursionFibonacci_recursion1849592961\001\main.go:32:64: undefined: zyloruntime.Subtract
+        C:\Users\Android\AppData\Local\Temp\TestRecursionFibonacci_recursion1849592961\001\main.go:35:70: cannot use zyloruntime.NewInteger(7) (value of type *zyloruntime.Integer) as int64 value in argument to fib
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func fib(n int64) interface{} {
+            if     zyloruntime.Operation(    n    ,     zyloruntime.NewInteger(1)    )     {
+                return                 n
+            }
+            return         zyloruntime.Add(    fib    (    zyloruntime.Subtract(    n    ,     zyloruntime.NewInteger(1)    )    )    ,     fib    (    zyloruntime.Subtract(    n    ,     zyloruntime.NewInteger(2)    )    )    )
+        }
+        func main() {
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    fib    (    zyloruntime.NewInteger(7)    )    )    )
+        }
+=== RUN   TestRecursion/Deep_recursion
+    framework.go:60: Parser errors: [expected '}', got EOF failed to parse function body]
+=== RUN   TestRecursion/Mutual_recursion
+    framework.go:71: Semantic errors: [ZYLO_ERR_003: Tipo incompatible - analysis:6:12 - variable no definida: es_impar
+          Esperado: esperado, Recibido: recibido
+          Sugerencia: Convierta el tipo explícitamente o cambie el tipo de la variable]
+=== RUN   TestRecursion/Tail_recursion_(concept)
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestRecursionTail_recursion_(concept)3445385042\001\main.go:29:24: undefined: zyloruntime.Operation
+        C:\Users\Android\AppData\Local\Temp\TestRecursionTail_recursion_(concept)3445385042\001\main.go:32:55: undefined: zyloruntime.Subtract
+        C:\Users\Android\AppData\Local\Temp\TestRecursionTail_recursion_(concept)3445385042\001\main.go:32:131: undefined: zyloruntime.Multiply
+        C:\Users\Android\AppData\Local\Temp\TestRecursionTail_recursion_(concept)3445385042\001\main.go:35:54: cannot use zyloruntime.NewInteger(1) (value of type *zyloruntime.Integer) as int64 value in argument to factorial_tail
+        C:\Users\Android\AppData\Local\Temp\TestRecursionTail_recursion_(concept)3445385042\001\main.go:38:84: cannot use zyloruntime.NewInteger(6) (value of type *zyloruntime.Integer) as int64 value in argument to factorial_wrapper
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func factorial_tail(n int64, acc int64) interface{} {
+            if     zyloruntime.Operation(    n    ,     zyloruntime.NewInteger(1)    )     {
+                return                 acc
+            }
+            return         factorial_tail    (    zyloruntime.Subtract(    n    ,     zyloruntime.NewInteger(1)    )    ,     zyloruntime.Multiply(    n    ,     acc    )    )
+        }
+        func factorial_wrapper(n int64) interface{} {
+            return         factorial_tail    (    n    ,     zyloruntime.NewInteger(1)    )
+        }
+        func main() {
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    factorial_wrapper    (    zyloruntime.NewInteger(6)    )    )    )
+        }
+--- FAIL: TestRecursion (1.14s)
+    --- FAIL: TestRecursion/Simple_recursion_-_factorial (0.34s)
+    --- FAIL: TestRecursion/Fibonacci_recursion (0.41s)
+    --- FAIL: TestRecursion/Deep_recursion (0.00s)
+    --- FAIL: TestRecursion/Mutual_recursion (0.00s)
+    --- FAIL: TestRecursion/Tail_recursion_(concept) (0.39s)
+=== RUN   TestFunctionErrors
+=== RUN   TestFunctionErrors/Return_in_void_function_should_fail
+    framework.go:41: Expected compilation to fail but it succeeded
+=== RUN   TestFunctionErrors/Void_function_with_return_statement_should_fail
+    framework.go:41: Expected compilation to fail but it succeeded
+=== RUN   TestFunctionErrors/Function_call_with_wrong_number_of_arguments
+    framework.go:41: Expected compilation to fail but it succeeded
+=== RUN   TestFunctionErrors/Function_call_with_wrong_argument_types
+    framework.go:41: Expected compilation to fail but it succeeded
+=== RUN   TestFunctionErrors/Undefined_function_call
+    framework.go:41: Expected compilation to fail but it succeeded
+=== RUN   TestFunctionErrors/Recursive_function_without_base_case
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestFunctionErrorsRecursive_function_without_base_case662596189\001\main.go:29:32: undefined: zyloruntime.Add
+        C:\Users\Android\AppData\Local\Temp\TestFunctionErrorsRecursive_function_without_base_case662596189\001\main.go:32:27: cannot use zyloruntime.NewInteger(1) (value of type *zyloruntime.Integer) as int64 value in argument to infinite_loop
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func infinite_loop(n int64) interface{} {
+            return         zyloruntime.Add(    infinite_loop    (    n    )    ,     zyloruntime.NewInteger(1)    )
+        }
+        func main() {
+            infinite_loop    (    zyloruntime.NewInteger(1)    )
+        }
+--- FAIL: TestFunctionErrors (0.34s)
+    --- FAIL: TestFunctionErrors/Return_in_void_function_should_fail (0.00s)
+    --- FAIL: TestFunctionErrors/Void_function_with_return_statement_should_fail (0.00s)
+    --- FAIL: TestFunctionErrors/Function_call_with_wrong_number_of_arguments (0.00s)
+    --- FAIL: TestFunctionErrors/Function_call_with_wrong_argument_types (0.00s)
+    --- FAIL: TestFunctionErrors/Undefined_function_call (0.00s)
+    --- FAIL: TestFunctionErrors/Recursive_function_without_base_case (0.34s)
+=== RUN   TestFunctionScopes
+=== RUN   TestFunctionScopes/Variable_scope_in_function
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestFunctionScopesVariable_scope_in_function1002423338\001\main.go:35:70: undefined: zyloruntime.Add
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func test() interface{} {
+            var     x     interface{}     =     zyloruntime.NewInteger(10)
+            return         x
+        }
+        func main() {
+            var     y     interface{}     =     zyloruntime.NewInteger(5)
+            var     result     interface{}     =     test    (    )
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    zyloruntime.Add(    result    ,     y    )    )    )
+        }
+=== RUN   TestFunctionScopes/Global_and_local_variables
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestFunctionScopesGlobal_and_local_variables1398571895\001\main.go:29:20: undefined: global
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func getGlobal() interface{} {
+            return         global
+        }
+        func setLocal() interface{} {
+            var     local     interface{}     =     zyloruntime.NewInteger(50)
+            return         local
+        }
+        func main() {
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    getGlobal    (    )    )    )
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    setLocal    (    )    )    )
+        }
+=== RUN   TestFunctionScopes/Function_parameters_don't_affect_global_scope
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestFunctionScopesFunction_parameters_dont_affect_global_scope1892324240\001\main.go:29:17: invalid operation: x + zyloruntime.NewInteger(10) (mismatched types int64 and *zyloruntime.Integer)
+        C:\Users\Android\AppData\Local\Temp\TestFunctionScopesFunction_parameters_dont_affect_global_scope1892324240\001\main.go:33:59: cannot use zyloruntime.NewInteger(5) (value of type *zyloruntime.Integer) as int64 value in argument to test
+        C:\Users\Android\AppData\Local\Temp\TestFunctionScopesFunction_parameters_dont_affect_global_scope1892324240\001\main.go:34: undefined: x
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func test(x int64) interface{} {
+            x     =     x     +     zyloruntime.NewInteger(10)
+            return         x
+        }
+        func main() {
+            var     result     interface{}     =     test    (    zyloruntime.NewInteger(5)    )
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    zyloruntime.NewString("result:")    )    ,     zyloruntime.ToZyloObject(    result    )    ,     zyloruntime.ToZyloObject(    zyloruntime.NewString("global x:")    )    ,     zyloruntime.ToZyloObject(    x    )    )
+        }
+=== RUN   TestFunctionScopes/Nested_function_scope
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestFunctionScopesNested_function_scope2771964458\001\main.go:30:10: syntax error: unexpected name inner, expected (
+        C:\Users\Android\AppData\Local\Temp\TestFunctionScopesNested_function_scope2771964458\001\main.go:32:9: syntax error: non-declaration statement outside function body
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func outer() interface{} {
+            var     outer_var     interface{}     =     zyloruntime.NewInteger(100)
+            func inner(    ) interface{} {
+                var         inner_var         interface{}         =         zyloruntime.NewInteger(50)
+                return                 zyloruntime.Add(        outer_var        ,         inner_var        )
+            }
+            return         inner    (    )
+        }
+        func main() {
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    outer    (    )    )    )
+        }
+--- FAIL: TestFunctionScopes (2.14s)
+    --- FAIL: TestFunctionScopes/Variable_scope_in_function (0.36s)
+    --- FAIL: TestFunctionScopes/Global_and_local_variables (0.38s)
+    --- FAIL: TestFunctionScopes/Function_parameters_don't_affect_global_scope (0.81s)
+    --- FAIL: TestFunctionScopes/Nested_function_scope (0.60s)
+=== RUN   TestConstantFolding
+=== RUN   TestConstantFolding/Constant_folding_-_simple_addition
+    framework.go:60: Parser errors: [no prefix parse function for DOT found]
+=== RUN   TestConstantFolding/Constant_folding_-_complex_arithmetic
+    framework.go:60: Parser errors: [no prefix parse function for DOT found]
+=== RUN   TestConstantFolding/Constant_folding_-_with_variables
+    framework.go:60: Parser errors: [':=' should not appear in expression context no prefix parse function for DOT found]
+=== RUN   TestConstantFolding/Boolean_constant_folding
+    framework.go:60: Parser errors: [no prefix parse function for DOT found]
+--- FAIL: TestConstantFolding (0.00s)
+    --- FAIL: TestConstantFolding/Constant_folding_-_simple_addition (0.00s)
+    --- FAIL: TestConstantFolding/Constant_folding_-_complex_arithmetic (0.00s)
+    --- FAIL: TestConstantFolding/Constant_folding_-_with_variables (0.00s)
+    --- FAIL: TestConstantFolding/Boolean_constant_folding (0.00s)
+=== RUN   TestDeadCodeElimination
+=== RUN   TestDeadCodeElimination/Dead_code_after_return
+    framework.go:88: Generated code validation failed:
+        package main
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func test() interface{} {
+            return         zyloruntime.NewInteger(5)
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    zyloruntime.NewString("Never executed")    )    )
+        }
+        func main() {
+        }
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestDeadCodeEliminationDead_code_after_return190672262\001\main.go:25:20: undefined: zyloruntime
+        C:\Users\Android\AppData\Local\Temp\TestDeadCodeEliminationDead_code_after_return190672262\001\main.go:26:5: undefined: zyloruntime
+        C:\Users\Android\AppData\Local\Temp\TestDeadCodeEliminationDead_code_after_return190672262\001\main.go:27:1: missing return
+        
+        
+        Generated code:
+        package main
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func test() interface{} {
+            return         zyloruntime.NewInteger(5)
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    zyloruntime.NewString("Never executed")    )    )
+        }
+        func main() {
+        }
+=== RUN   TestDeadCodeElimination/Dead_code_in_if_false_branch
+    framework.go:88: Generated code validation failed:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            if     true     {
+                zyloruntime.Println(        zyloruntime.ToZyloObject(        zyloruntime.NewString("Always")        )        )
+            }     else {
+                zyloruntime.Println(        zyloruntime.ToZyloObject(        zyloruntime.NewString("Never")        )        )
+            }
+        }
+=== RUN   TestDeadCodeElimination/Unreachable_code_after_break
+    framework.go:88: Generated code validation failed:
+        package main
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            // TODO: Sentencia no soportada: *ast.WhileStatement
+        }
+    framework.go:112: Output mismatch:
+        Expected: "Once"
+        Got: ""
+--- FAIL: TestDeadCodeElimination (1.23s)
+    --- FAIL: TestDeadCodeElimination/Dead_code_after_return (0.26s)
+    --- FAIL: TestDeadCodeElimination/Dead_code_in_if_false_branch (0.56s)
+    --- FAIL: TestDeadCodeElimination/Unreachable_code_after_break (0.41s)
+=== RUN   TestNativeTypeOptimizations
+=== RUN   TestNativeTypeOptimizations/Native_int_arithmetic_-_no_runtime_wrapper
+    framework.go:88: Generated code validation failed:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     a     int64     =     10
+            var     b     int64     =     20
+            var     c     interface{}     =     zyloruntime.Add(    a    ,     b    )
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    c    )    )
+        }
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestNativeTypeOptimizationsNative_int_arithmetic_-_no_runtime_wrapper1819105117\001\main.go:31:53: undefined: zyloruntime.Add
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     a     int64     =     10
+            var     b     int64     =     20
+            var     c     interface{}     =     zyloruntime.Add(    a    ,     b    )
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    c    )    )
+        }
+=== RUN   TestNativeTypeOptimizations/Native_float_arithmetic
+    framework.go:88: Generated code validation failed:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     a     float64     =     3.500000
+            var     b     float64     =     2.100000
+            var     c     interface{}     =     zyloruntime.Multiply(    a    ,     b    )
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    c    )    )
+        }
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestNativeTypeOptimizationsNative_float_arithmetic3836375422\001\main.go:31:53: undefined: zyloruntime.Multiply
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     a     float64     =     3.500000
+            var     b     float64     =     2.100000
+            var     c     interface{}     =     zyloruntime.Multiply(    a    ,     b    )
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    c    )    )
+        }
+=== RUN   TestNativeTypeOptimizations/Mixed_type_operations
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestNativeTypeOptimizationsMixed_type_operations3320944096\001\main.go:31:58: undefined: zyloruntime.Add
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     x     int64     =     5
+            var     y     float64     =     3.000000
+            var     result     interface{}     =     zyloruntime.Add(    x    ,     y    )
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    result    )    )
+        }
+--- FAIL: TestNativeTypeOptimizations (1.77s)
+    --- FAIL: TestNativeTypeOptimizations/Native_int_arithmetic_-_no_runtime_wrapper (0.42s)
+    --- FAIL: TestNativeTypeOptimizations/Native_float_arithmetic (0.43s)
+    --- FAIL: TestNativeTypeOptimizations/Mixed_type_operations (0.91s)
+=== RUN   TestIfOptimization
+=== RUN   TestIfOptimization/If_true_optimization
+    framework.go:88: Generated code validation failed:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            if     true     {
+                zyloruntime.Println(        zyloruntime.ToZyloObject(        zyloruntime.NewString("Always")        )        )
+            }     else {
+                zyloruntime.Println(        zyloruntime.ToZyloObject(        zyloruntime.NewString("Never")        )        )
+            }
+        }
+=== RUN   TestIfOptimization/If_false_optimization
+    framework.go:88: Generated code validation failed:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            if     false     {
+                zyloruntime.Println(        zyloruntime.ToZyloObject(        zyloruntime.NewString("Never")        )        )
+            }     else {
+                zyloruntime.Println(        zyloruntime.ToZyloObject(        zyloruntime.NewString("Always")        )        )
+            }
+        }
+=== RUN   TestIfOptimization/Constant_condition_in_while
+--- FAIL: TestIfOptimization (2.06s)
+    --- FAIL: TestIfOptimization/If_true_optimization (0.61s)
+    --- FAIL: TestIfOptimization/If_false_optimization (0.65s)
+    --- PASS: TestIfOptimization/Constant_condition_in_while (0.80s)
+=== RUN   TestVariablePropagation
+=== RUN   TestVariablePropagation/Simple_variable_propagation
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestVariablePropagationSimple_variable_propagation1365114530\001\main.go:30:53: undefined: zyloruntime.Add
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     x     interface{}     =     zyloruntime.NewInteger(5)
+            var     y     interface{}     =     zyloruntime.Add(    x    ,     zyloruntime.NewInteger(3)    )
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    y    )    )
+        }
+=== RUN   TestVariablePropagation/Multiple_variable_uses
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestVariablePropagationMultiple_variable_uses2513021888\001\main.go:30:53: undefined: zyloruntime.Multiply
+        C:\Users\Android\AppData\Local\Temp\TestVariablePropagationMultiple_variable_uses2513021888\001\main.go:31:53: undefined: zyloruntime.Add
+        C:\Users\Android\AppData\Local\Temp\TestVariablePropagationMultiple_variable_uses2513021888\001\main.go:32:53: undefined: zyloruntime.Divide
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     a     interface{}     =     zyloruntime.NewInteger(10)
+            var     b     interface{}     =     zyloruntime.Multiply(    a    ,     zyloruntime.NewInteger(2)    )
+            var     c     interface{}     =     zyloruntime.Add(    b    ,     zyloruntime.NewInteger(5)    )
+            var     d     interface{}     =     zyloruntime.Divide(    c    ,     zyloruntime.NewInteger(3)    )
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    d    )    )
+        }
+=== RUN   TestVariablePropagation/Variable_reassignment
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestVariablePropagationVariable_reassignment1774857519\001\main.go:30:13: x redeclared in this block
+        	C:\Users\Android\AppData\Local\Temp\TestVariablePropagationVariable_reassignment1774857519\001\main.go:29:13: other declaration of x
+        C:\Users\Android\AppData\Local\Temp\TestVariablePropagationVariable_reassignment1774857519\001\main.go:30:53: undefined: zyloruntime.Add
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     x     interface{}     =     zyloruntime.NewInteger(5)
+            var     x     interface{}     =     zyloruntime.Add(    x    ,     zyloruntime.NewInteger(1)    )
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    x    )    )
+        }
+--- FAIL: TestVariablePropagation (1.23s)
+    --- FAIL: TestVariablePropagation/Simple_variable_propagation (0.44s)
+    --- FAIL: TestVariablePropagation/Multiple_variable_uses (0.45s)
+    --- FAIL: TestVariablePropagation/Variable_reassignment (0.34s)
+=== RUN   TestLoopOptimizations
+=== RUN   TestLoopOptimizations/Empty_loop_optimization
+    framework.go:112: Output mismatch:
+        Expected: "Done after 1000000 iterations"
+        Got: "Done after 0 iterations"
+=== RUN   TestLoopOptimizations/Loop_invariant_code_motion_simulation
+    framework.go:112: Output mismatch:
+        Expected: "150"
+        Got: "0"
+--- FAIL: TestLoopOptimizations (1.38s)
+    --- FAIL: TestLoopOptimizations/Empty_loop_optimization (0.73s)
+    --- FAIL: TestLoopOptimizations/Loop_invariant_code_motion_simulation (0.64s)
+=== RUN   TestOptimizationValidation
+=== RUN   TestOptimizationValidation/Optimizations_don't_change_program_behavior
+    framework.go:60: Parser errors: [expected variable name, got CONST ':=' should not appear in expression context no prefix parse function for CONST found no prefix parse function for STAR found]
+=== RUN   TestOptimizationValidation/Maintain_execution_order_in_optimizations
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestOptimizationValidationMaintain_execution_order_in_optimizations3142747549\001\main.go:33:53: undefined: zyloruntime.Add
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func side_effect() interface{} {
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    zyloruntime.NewString("executed")    )    )
+            return         zyloruntime.NewInteger(42)
+        }
+        func main() {
+            var     x     interface{}     =     zyloruntime.Add(    side_effect    (    )    ,     zyloruntime.NewInteger(8)    )
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    zyloruntime.NewString("result:")    )    ,     zyloruntime.ToZyloObject(    x    )    )
+        }
+=== RUN   TestOptimizationValidation/Don't_optimize_away_necessary_operations
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestOptimizationValidationDont_optimize_away_necessary_operations1970889832\001\main.go:31:53: undefined: zyloruntime.Add
+        C:\Users\Android\AppData\Local\Temp\TestOptimizationValidationDont_optimize_away_necessary_operations1970889832\001\main.go:32:53: undefined: zyloruntime.Multiply
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     a     interface{}     =     zyloruntime.NewInteger(1)
+            var     b     interface{}     =     zyloruntime.NewInteger(2)
+            var     c     interface{}     =     zyloruntime.Add(    a    ,     b    )
+            var     d     interface{}     =     zyloruntime.Multiply(    c    ,     zyloruntime.NewInteger(3)    )
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    d    )    )
+        }
+--- FAIL: TestOptimizationValidation (0.63s)
+    --- FAIL: TestOptimizationValidation/Optimizations_don't_change_program_behavior (0.00s)
+    --- FAIL: TestOptimizationValidation/Maintain_execution_order_in_optimizations (0.32s)
+    --- FAIL: TestOptimizationValidation/Don't_optimize_away_necessary_operations (0.31s)
+=== RUN   TestVariableDeclarations
+=== RUN   TestVariableDeclarations/Typed_variable_int
+=== RUN   TestVariableDeclarations/Typed_variable_float
+=== RUN   TestVariableDeclarations/Typed_variable_string
+=== RUN   TestVariableDeclarations/Typed_variable_bool
+=== RUN   TestVariableDeclarations/Variable_with_type_inference
+=== RUN   TestVariableDeclarations/Variable_without_initialization
+    framework.go:71: Semantic errors: [ZYLO_ERR_003: Tipo incompatible - analysis:3:18 - variable no definida: int
+          Esperado: esperado, Recibido: recibido
+          Sugerencia: Convierta el tipo explícitamente o cambie el tipo de la variable]
+=== RUN   TestVariableDeclarations/UPPERCASE_constant
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestVariableDeclarationsUPPERCASE_constant902674499\001\main.go:29:58: undefined: PI
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    PI    )    )
+        }
+=== RUN   TestVariableDeclarations/Constant_reassignment_should_fail
+    framework.go:41: Expected compilation to fail but it succeeded
+=== RUN   TestVariableDeclarations/Uppercase_type_should_fail
+    framework.go:41: Expected compilation to fail but it succeeded
+=== RUN   TestVariableDeclarations/Mixed_type_operations_int_+_float
+    framework.go:103: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestVariableDeclarationsMixed_type_operations_int_+_float2476604279\001\main.go:29:61: cannot convert zyloruntime.NewInteger(5) (value of type *zyloruntime.Integer) to type float64
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     resultado     interface{}     =     float64(    zyloruntime.NewInteger(5)    )     +     zyloruntime.NewFloat(3.140000)
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    resultado    )    )
+        }
+--- FAIL: TestVariableDeclarations (3.79s)
+    --- PASS: TestVariableDeclarations/Typed_variable_int (0.50s)
+    --- PASS: TestVariableDeclarations/Typed_variable_float (0.47s)
+    --- PASS: TestVariableDeclarations/Typed_variable_string (0.72s)
+    --- PASS: TestVariableDeclarations/Typed_variable_bool (0.63s)
+    --- PASS: TestVariableDeclarations/Variable_with_type_inference (0.74s)
+    --- FAIL: TestVariableDeclarations/Variable_without_initialization (0.00s)
+    --- FAIL: TestVariableDeclarations/UPPERCASE_constant (0.42s)
+    --- FAIL: TestVariableDeclarations/Constant_reassignment_should_fail (0.00s)
+    --- FAIL: TestVariableDeclarations/Uppercase_type_should_fail (0.00s)
+    --- FAIL: TestVariableDeclarations/Mixed_type_operations_int_+_float (0.32s)
+=== RUN   TestArithmeticOperators
+=== RUN   TestArithmeticOperators/Addition
+    framework.go:41: Expected compilation to fail but it succeeded
+=== RUN   TestArithmeticOperators/Subtraction
+    framework.go:41: Expected compilation to fail but it succeeded
+=== RUN   TestArithmeticOperators/Multiplication
+    framework.go:41: Expected compilation to fail but it succeeded
+=== RUN   TestArithmeticOperators/Division_returns_float
+    framework.go:41: Expected compilation to fail but it succeeded
+=== RUN   TestArithmeticOperators/Modulo
+    framework.go:41: Expected compilation to fail but it succeeded
+=== RUN   TestArithmeticOperators/Complex_expression_with_precedence
+    framework.go:41: Expected compilation to fail but it succeeded
+=== RUN   TestArithmeticOperators/Parentheses_override_precedence
+    framework.go:41: Expected compilation to fail but it succeeded
+=== RUN   TestArithmeticOperators/Negative_numbers
+    framework.go:41: Expected compilation to fail but it succeeded
+=== RUN   TestArithmeticOperators/Complex_arithmetic_chain
+    framework.go:41: Expected compilation to fail but it succeeded
+=== RUN   TestArithmeticOperators/Arithmetic_with_variables
+    framework.go:41: Expected compilation to fail but it succeeded
+--- FAIL: TestArithmeticOperators (0.00s)
+    --- FAIL: TestArithmeticOperators/Addition (0.00s)
+    --- FAIL: TestArithmeticOperators/Subtraction (0.00s)
+    --- FAIL: TestArithmeticOperators/Multiplication (0.00s)
+    --- FAIL: TestArithmeticOperators/Division_returns_float (0.00s)
+    --- FAIL: TestArithmeticOperators/Modulo (0.00s)
+    --- FAIL: TestArithmeticOperators/Complex_expression_with_precedence (0.00s)
+    --- FAIL: TestArithmeticOperators/Parentheses_override_precedence (0.00s)
+    --- FAIL: TestArithmeticOperators/Negative_numbers (0.00s)
+    --- FAIL: TestArithmeticOperators/Complex_arithmetic_chain (0.00s)
+    --- FAIL: TestArithmeticOperators/Arithmetic_with_variables (0.00s)
+=== RUN   TestComparisonOperators
+=== RUN   TestComparisonOperators/Equal
+    framework.go:41: Expected compilation to fail but it succeeded
+=== RUN   TestComparisonOperators/Not_equal
+    framework.go:41: Expected compilation to fail but it succeeded
+=== RUN   TestComparisonOperators/Greater_than
+    framework.go:41: Expected compilation to fail but it succeeded
+=== RUN   TestComparisonOperators/Less_than
+    framework.go:41: Expected compilation to fail but it succeeded
+=== RUN   TestComparisonOperators/Greater_or_equal
+    framework.go:41: Expected compilation to fail but it succeeded
+=== RUN   TestComparisonOperators/Less_or_equal
+    framework.go:41: Expected compilation to fail but it succeeded
+=== RUN   TestComparisonOperators/Equal_false
+    framework.go:41: Expected compilation to fail but it succeeded
+=== RUN   TestComparisonOperators/Not_equal_false
+    framework.go:41: Expected compilation to fail but it succeeded
+=== RUN   TestComparisonOperators/Greater_than_false
+    framework.go:41: Expected compilation to fail but it succeeded
+=== RUN   TestComparisonOperators/Less_than_false
+    framework.go:41: Expected compilation to fail but it succeeded
+--- FAIL: TestComparisonOperators (0.00s)
+    --- FAIL: TestComparisonOperators/Equal (0.00s)
+    --- FAIL: TestComparisonOperators/Not_equal (0.00s)
+    --- FAIL: TestComparisonOperators/Greater_than (0.00s)
+    --- FAIL: TestComparisonOperators/Less_than (0.00s)
+    --- FAIL: TestComparisonOperators/Greater_or_equal (0.00s)
+    --- FAIL: TestComparisonOperators/Less_or_equal (0.00s)
+    --- FAIL: TestComparisonOperators/Equal_false (0.00s)
+    --- FAIL: TestComparisonOperators/Not_equal_false (0.00s)
+    --- FAIL: TestComparisonOperators/Greater_than_false (0.00s)
+    --- FAIL: TestComparisonOperators/Less_than_false (0.00s)
+=== RUN   TestLogicalOperators
+=== RUN   TestLogicalOperators/AND_operator
+    framework.go:41: Expected compilation to fail but it succeeded
+=== RUN   TestLogicalOperators/OR_operator
+    framework.go:41: Expected compilation to fail but it succeeded
+=== RUN   TestLogicalOperators/NOT_operator
+    framework.go:41: Expected compilation to fail but it succeeded
+=== RUN   TestLogicalOperators/NOT_keyword
+    framework.go:41: Expected compilation to fail but it succeeded
+=== RUN   TestLogicalOperators/Short-circuit_AND_true
+    framework.go:41: Expected compilation to fail but it succeeded
+=== RUN   TestLogicalOperators/Short-circuit_AND_false
+    framework.go:41: Expected compilation to fail but it succeeded
+=== RUN   TestLogicalOperators/Short-circuit_OR_true
+    framework.go:41: Expected compilation to fail but it succeeded
+=== RUN   TestLogicalOperators/Short-circuit_OR_false
+    framework.go:41: Expected compilation to fail but it succeeded
+=== RUN   TestLogicalOperators/Complex_logical_expression
+    framework.go:41: Expected compilation to fail but it succeeded
+=== RUN   TestLogicalOperators/Logical_with_variables
+    framework.go:41: Expected compilation to fail but it succeeded
+--- FAIL: TestLogicalOperators (0.00s)
+    --- FAIL: TestLogicalOperators/AND_operator (0.00s)
+    --- FAIL: TestLogicalOperators/OR_operator (0.00s)
+    --- FAIL: TestLogicalOperators/NOT_operator (0.00s)
+    --- FAIL: TestLogicalOperators/NOT_keyword (0.00s)
+    --- FAIL: TestLogicalOperators/Short-circuit_AND_true (0.00s)
+    --- FAIL: TestLogicalOperators/Short-circuit_AND_false (0.00s)
+    --- FAIL: TestLogicalOperators/Short-circuit_OR_true (0.00s)
+    --- FAIL: TestLogicalOperators/Short-circuit_OR_false (0.00s)
+    --- FAIL: TestLogicalOperators/Complex_logical_expression (0.00s)
+    --- FAIL: TestLogicalOperators/Logical_with_variables (0.00s)
+FAIL
+FAIL	github.com/zylo-lang/zylo/internal/tests	52.185s
+FAIL

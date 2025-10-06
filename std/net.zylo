@@ -1,0 +1,297 @@
+// Network utilities for Zylo standard library
+
+// Make HTTP request (simplified implementation)
+func request(method string, url string) string {
+    // Basic request structure validation
+    method = upper(trim(method))
+
+    if method != "GET" && method != "POST" && method != "PUT" && method != "DELETE" {
+        show.error("[ZYLO_ERR_127] Tipo: Método HTTP no soportado. Línea: -1, Columna: -1")
+        return ""
+    }
+
+    if len(url) == 0 {
+        show.error("[ZYLO_ERR_128] Tipo: URL vacía en request. Línea: -1, Columna: -1")
+        return ""
+    }
+
+    // Implementation handled by runtime
+    // Returns JSON response or error message
+    return "{}"
+}
+
+// GET request
+func get(url string) string {
+    return request("GET", url)
+}
+
+// POST request with data
+func post(url string, data string) string {
+    // For POST requests, we would typically send data in body
+    // Simplified: append data as query parameter
+    separator string := "?"
+    if contains(url, "?") {
+        separator = "&"
+    }
+
+    full_url string := url + separator + "data=" + data
+    return request("POST", full_url)
+}
+
+// PUT request
+func put(url string, data string) string {
+    separator string := "?"
+    if contains(url, "?") {
+        separator = "&"
+    }
+
+    full_url string := url + separator + "data=" + data
+    return request("PUT", full_url)
+}
+
+// DELETE request
+func delete(url string) string {
+    return request("DELETE", url)
+}
+
+// Parse URL into components
+func parse_url(url string) map[string]string {
+    result map[string]string := map[string]string{}
+
+    // Basic URL parsing - simplified
+    if starts_with(url, "http://") {
+        set(result, "protocol", "http")
+        url = url[7:]
+    } else if starts_with(url, "https://") {
+        set(result, "protocol", "https")
+        url = url[8:]
+    } else {
+        set(result, "protocol", "http")  // default
+    }
+
+    // Split into host and path
+    if contains(url, "/") {
+        parts []string := split(url, "/")
+        if len(parts) >= 1 {
+            set(result, "host", parts[0])
+            remaining string := join(parts[1:], "/")
+            set(result, "path", "/" + remaining)
+        }
+    } else {
+        set(result, "host", url)
+        set(result, "path", "/")
+    }
+
+    // Extract port if specified
+    host string := get_or_default(result, "host", "")
+    if contains(host, ":") {
+        host_parts []string := split(host, ":")
+        if len(host_parts) == 2 {
+            set(result, "hostname", host_parts[0])
+            set(result, "port", host_parts[1])
+        }
+    } else {
+        set(result, "hostname", host)
+        // Default ports
+        if get(result, "protocol") == "https" {
+            set(result, "port", "443")
+        } else {
+            set(result, "port", "80")
+        }
+    }
+
+    return result
+}
+
+// Build URL from components
+func build_url(protocol string, host string, port string, path string) string {
+    url string := protocol + "://" + host
+
+    if (protocol == "https" && port != "443") || (protocol == "http" && port != "80") {
+        url = url + ":" + port
+    }
+
+    if path == "" {
+        url = url + "/"
+    } else if !starts_with(path, "/") {
+        url = url + "/" + path
+    } else {
+        url = url + path
+    }
+
+    return url
+}
+
+// Encode URL parameters
+func encode_url_params(params map[string]string) string {
+    result string := ""
+
+    keys_list []string := keys(params)
+    i int := 0
+    while i < len(keys_list) {
+        key string := keys_list[i]
+        value string := get(params, key)
+
+        if i > 0 {
+            result = result + "&"
+        }
+
+        // Simple URL encoding for spaces and special chars
+        key = replace(key, " ", "%20")
+        key = replace(key, "&", "%26")
+        value = replace(value, " ", "%20")
+        value = replace(value, "&", "%26")
+
+        result = result + key + "=" + value
+        i = i + 1
+    }
+
+    return result
+}
+
+// Decode URL parameters
+func decode_url_params(query string) map[string]string {
+    result map[string]string := map[string]string{}
+
+    if len(query) == 0 {
+        return result
+    }
+
+    pairs []string := split(query, "&")
+    i int := 0
+    while i < len(pairs) {
+        pair string := pairs[i]
+        if contains(pair, "=") {
+            parts []string := split(pair, "=")
+            if len(parts) == 2 {
+                key string := replace(parts[0], "%20", " ")
+                key = replace(key, "%26", "&")
+
+                value string := replace(parts[1], "%20", " ")
+                value = replace(value, "%26", "&")
+
+                set(result, key, value)
+            }
+        }
+        i = i + 1
+    }
+
+    return result
+}
+
+// Create a simple HTTP server response simulation
+func create_response(status_code int, body string, headers map[string]string) string {
+    if headers == nil {
+        headers = map[string]string{}
+    }
+
+    status_text string := "OK"
+    if status_code == 404 {
+        status_text = "Not Found"
+    } else if status_code == 500 {
+        status_text = "Internal Server Error"
+    } else if status_code == 400 {
+        status_text = "Bad Request"
+    }
+
+    // Build response
+    response string := "HTTP/1.1 " + string(status_code) + " " + status_text + "\n"
+
+    // Default headers
+    if !has_key(headers, "Content-Type") {
+        set(headers, "Content-Type", "application/json")
+    }
+    if !has_key(headers, "Content-Length") {
+        set(headers, "Content-Length", string(len(body)))
+    }
+
+    // Add headers
+    header_keys []string := keys(headers)
+    i int := 0
+    while i < len(header_keys) {
+        key string := header_keys[i]
+        value string := get(headers, key)
+        response = response + key + ": " + value + "\n"
+        i = i + 1
+    }
+
+    response = response + "\n" + body
+    return response
+}
+
+// Parse HTTP response (simplified)
+func parse_response(response string) map[string]any {
+    result map[string]any := map[string]any{}
+
+    lines []string := split(response, "\n")
+    if len(lines) == 0 {
+        return result
+    }
+
+    // Parse status line
+    status_line string := lines[0]
+    parts []string := split(status_line, " ")
+    if len(parts) >= 3 {
+        status_parts []string := parts[1:2]
+        set(result, "status_code", status_parts[0])
+        set(result, "status_text", status_parts[1])
+    }
+
+    // Parse headers
+    headers map[string]string := map[string]string{}
+    i int := 1
+    while i < len(lines) && len(lines[i]) > 0 {
+        if contains(lines[i], ": ") {
+            header_parts []string := split(lines[i], ": ")
+            if len(header_parts) == 2 {
+                set(headers, trim(header_parts[0]), trim(header_parts[1]))
+            }
+        }
+        i = i + 1
+    }
+    set(result, "headers", headers)
+
+    // Skip empty line and get body
+    i = i + 1
+    body_lines []string := []string{}
+    while i < len(lines) {
+        append(body_lines, lines[i])
+        i = i + 1
+    }
+    set(result, "body", join(body_lines, "\n"))
+
+    return result
+}
+
+// Check if URL is valid
+func is_valid_url(url string) bool {
+    parsed map[string]string := parse_url(url)
+
+    protocol string := get_or_default(parsed, "protocol", "")
+    host string := get_or_default(parsed, "host", "")
+
+    return (protocol == "http" || protocol == "https") && len(host) > 0
+}
+
+// Get content type from URL
+func get_content_type(url string) string {
+    if ends_with(lower(url), ".json") {
+        return "application/json"
+    } else if ends_with(lower(url), ".xml") {
+        return "application/xml"
+    } else if ends_with(lower(url), ".html") || ends_with(lower(url), ".htm") {
+        return "text/html"
+    } else if ends_with(lower(url), ".txt") {
+        return "text/plain"
+    } else {
+        return "application/octet-stream"
+    }
+}
+
+// Simulate network delay for testing
+func simulate_delay(url string, delay_ms int) string {
+    if delay_ms > 0 {
+        sleep(delay_ms)
+    }
+    return get(url)
+}

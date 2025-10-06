@@ -1,0 +1,30 @@
+// ZyloPress SQLite Driver
+import { logger } from '../../utils.zylo'
+
+class SQLiteDriver {
+  var connection: Any = null
+  var config: Map
+
+  func connect(config: Map) -> Void {
+    this.config = config
+    this.connection = zylo.db.sqlite.connect(config.DB_PATH)
+    logger.info('Connected to SQLite database')
+  }
+
+  func query(sql: String, params: List<Any>) -> List<Map> {
+    return this.connection.query(sql, params)
+  }
+
+  func close() -> Void {
+    if (this.connection) {
+      this.connection.close()
+      logger.info('SQLite connection closed')
+    }
+  }
+
+  func getName() -> String {
+    return 'SQLite'
+  }
+}
+
+export default SQLiteDriver

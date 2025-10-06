@@ -1,0 +1,185 @@
+// ZyloPress Middlewares - Native Zylo Security and Utilities
+import jwt from './security/jwt.zylo'
+import bcrypt from './security/bcrypt.zylo'
+import { logger, validate as validateInput } from './utils.zylo'
+
+// Authentication middleware
+func auth(roles: List<String> = []) -> Function {
+  return (req: HttpRequest, res: HttpResponse, next: Function) -> Void {
+    var token = req.headers['authorization']?.replace('Bearer ', '')
+    if (!token) {
+      res.status(401).json({ error: 'No token provided', code: 401 })
+      return
+    }
+
+    try {
+      var decoded = jwt.verify(token)
+      req.user = decoded
+      if (roles.length > 0 && !roles.contains(decoded.role)) {
+        res.status(403).json({ error: 'Insufficient permissions', code: 403 })
+        return
+      }
+      next()
+    } catch (err) {
+      res.status(401).json({ error: 'Invalid token', code: 401 })
+    }
+  }
+}
+
+// Validation middleware
+func validate(schema: Map) -> Function {
+  return (req: HttpRequest, res: HttpResponse, next: Function) -> Void {
+    var errors = validateInput(req.body, schema)
+    if (!errors.isValid) {
+      res.status(400).json({ error: 'Validation failed', details: errors.errors, code: 400 })
+      return
+    }
+    next()
+  }
+}
+
+// CORS middleware
+func cors(options: Map = {}) -> Function {
+  var allowedOrigins = options.allowedOrigins || ['*']
+  var allowedMethods = options.allowedMethods || ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']
+  var allowedHeaders = options.allowedHeaders || ['Content-Type', 'Authorization']
+
+  return (req: HttpRequest, res: HttpResponse, next: Function) -> Void {
+    var origin = req.headers['origin']
+    if (allowedOrigins.contains('*') || allowedOrigins.contains(origin)) {
+      res.setHeader('Access-Control-Allow-Origin', origin || '*')
+    }
+    res.setHeader('Access-Control-Allow-Methods', allowedMethods.join(', '))
+    res.setHeader('Access-Control-Allow-Headers', allowedHeaders.join(', '))
+    res.setHeader('Access-Control-Allow-Credentials', 'true')
+
+    if (req.method == 'OPTIONS') {
+      res.status(200).send('')
+      return
+    }
+    next()
+  }
+}
+
+// Helmet middleware - Security headers
+func helmet(options: Map = {}) -> Function {
+  return (req: HttpRequest, res: HttpResponse, next: Function) -> Void {
+    res.setHeader('X-Content-Type-Options', 'nosniff')
+    res.setHeader('X-Frame-Options', 'DENY')
+    res.setHeader('X-XSS-Protection', '1; mode=block')
+    res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains')
+    res.setHeader('Content-Security-Policy', "default-src 'self'")
+    next()
+  }
+}
+
+// Rate limiting middleware
+var rateLimitStore: Map<String, Map> = {}
+
+func rateLimit(options: Map = {}) -> Function {
+  var windowMs = options.windowMs || 60000  // 1 minute
+  var maxRequests = options.max || 100
+
+  return (req: HttpRequest, res: HttpResponse, next: Function) -> Void {
+    var key = req.ip || 'unknown'
+    var now = zylo.time.now()
+    var windowStart = now - windowMs
+
+    if (!rateLimitStore[key]) {
+      rateLimitStore[key] = { requests: [], resetTime: now + windowMs }
+    }
+
+    var userData = rateLimitStore[key]
+    userData.requests = userData.requests.filter(time => time > windowStart)
+
+    if (userData.requests.length >= maxRequests) {
+      res.status(429).json({ error: 'Too many requests', code: 429 })
+      return
+    }
+
+    userData.requests.push(now)
+    res.setHeader('X-RateLimit-Limit', maxRequests.toString())
+    res.setHeader('X-RateLimit-Remaining', (maxRequests - userData.requests.length).toString())
+    next()
+  }
+}
+
+// CSRF protection middleware
+var csrfTokens: Map<String, String> = {}
+
+func csrf(options: Map = {}) -> Function {
+  return (req: HttpRequest, res: HttpResponse, next: Function) -> Void {
+    if (req.method == 'GET' || req.method == 'HEAD' || req.method == 'OPTIONS') {
+      next()
+      return
+    }
+
+    var token = req.headers['x-csrf-token'] || req.body._csrf
+    var sessionId = req.headers['session-id'] || 'default'
+
+    if (!csrfTokens[sessionId] || csrfTokens[sessionId] != token) {
+      res.status(403).json({ error: 'Invalid CSRF token', code: 403 })
+      return
+    }
+    next()
+  }
+}
+
+// Generate CSRF token
+func generateCsrfToken(sessionId: String = 'default') -> String {
+  var token = zylo.crypto.randomBytes(32).toString('hex')
+  csrfTokens[sessionId] = token
+  return token
+}
+
+// Cache middleware
+var cacheStore: Map<String, Map> = {}
+
+func cache(options: Map = {}) -> Function {
+  var ttl = options.ttl || 300  // 5 minutes
+
+  return (req: HttpRequest, res: HttpResponse, next: Function) -> Void {
+    if (req.method != 'GET') {
+      next()
+      return
+    }
+
+    var key = req.url
+    var cached = cacheStore[key]
+
+    if (cached && zylo.time.now() < cached.expires) {
+      res.setHeader('X-Cache', 'HIT')
+      res.json(cached.data)
+      return
+    }
+
+    res.setHeader('X-Cache', 'MISS')
+    var originalJson = res.json
+    res.json = (data) => {
+      cacheStore[key] = { data: data, expires: zylo.time.now() + ttl * 1000 }
+      originalJson(data)
+    }
+
+    next()
+  }
+}
+
+// Error handling middleware
+func errorHandler(err: Error, req: HttpRequest, res: HttpResponse) -> Void {
+  var timestamp = zylo.time.iso()
+  var route = req.method + ' ' + req.url
+  var errorType = err.name || 'Error'
+
+  logger.error('[' + timestamp + '] ' + route + ' - ' + errorType + ': ' + err.message)
+
+  var status = err.status || 500
+  var message = err.message || 'Internal Server Error'
+
+  res.status(status).json({
+    error: message,
+    code: status,
+    timestamp: timestamp
+  })
+}
+
+export { auth, validate, cors, helmet, rateLimit, csrf, generateCsrfToken, cache, errorHandler }

@@ -1,0 +1,128 @@
+=== RUN   TestVariableDeclarations
+=== RUN   TestVariableDeclarations/Typed_variable_int
+=== RUN   TestVariableDeclarations/Typed_variable_float
+=== RUN   TestVariableDeclarations/Typed_variable_string
+=== RUN   TestVariableDeclarations/Typed_variable_bool
+=== RUN   TestVariableDeclarations/Variable_with_type_inference
+=== RUN   TestVariableDeclarations/Variable_without_initialization_should_fail
+=== RUN   TestVariableDeclarations/UPPERCASE_constant
+=== RUN   TestVariableDeclarations/Constant_reassignment_should_fail
+=== RUN   TestVariableDeclarations/Uppercase_type_should_fail
+=== RUN   TestVariableDeclarations/Mixed_type_operations_int_+_float
+    framework.go:96: Go compilation/execution failed:
+        # command-line-arguments
+        C:\Users\Android\AppData\Local\Temp\TestVariableDeclarationsMixed_type_operations_int_+_float2593324103\001\main.go:29:61: cannot convert zyloruntime.NewInteger(5) (value of type *zyloruntime.Integer) to type float64
+        
+        
+        Generated code:
+        package main
+        
+        import (
+            zyloruntime "github.com/zylo-lang/zylo/runtime"
+        )
+        
+        // Built-in Result type
+        type Result struct {
+            Value interface{}
+            Error interface{}
+        }
+        
+        func (r *Result) IsOk() interface{} {
+            return r.Error == nil
+        }
+        
+        func (r *Result) IsErr() interface{} {
+            return r.Error != nil
+        }
+        
+        func (r *Result) Unwrap() interface{} {
+            if r.Error != nil {
+                panic(r.Error)
+            }
+            return r.Value
+        }
+        
+        func main() {
+            var     resultado     interface{}     =     float64(    zyloruntime.NewInteger(5)    )     +     zyloruntime.NewFloat(3.140000)
+            zyloruntime.Println(    zyloruntime.ToZyloObject(    resultado    )    )
+        }
+--- FAIL: TestVariableDeclarations (4.09s)
+    --- PASS: TestVariableDeclarations/Typed_variable_int (0.44s)
+    --- PASS: TestVariableDeclarations/Typed_variable_float (0.50s)
+    --- PASS: TestVariableDeclarations/Typed_variable_string (0.42s)
+    --- PASS: TestVariableDeclarations/Typed_variable_bool (0.41s)
+    --- PASS: TestVariableDeclarations/Variable_with_type_inference (0.45s)
+    --- PASS: TestVariableDeclarations/Variable_without_initialization_should_fail (0.00s)
+    --- PASS: TestVariableDeclarations/UPPERCASE_constant (1.48s)
+    --- PASS: TestVariableDeclarations/Constant_reassignment_should_fail (0.00s)
+    --- PASS: TestVariableDeclarations/Uppercase_type_should_fail (0.00s)
+    --- FAIL: TestVariableDeclarations/Mixed_type_operations_int_+_float (0.37s)
+=== RUN   TestArithmeticOperators
+=== RUN   TestArithmeticOperators/Addition
+=== RUN   TestArithmeticOperators/Subtraction
+=== RUN   TestArithmeticOperators/Multiplication
+=== RUN   TestArithmeticOperators/Division_returns_float
+=== RUN   TestArithmeticOperators/Modulo
+=== RUN   TestArithmeticOperators/Complex_expression_with_precedence
+=== RUN   TestArithmeticOperators/Parentheses_override_precedence
+=== RUN   TestArithmeticOperators/Negative_numbers
+=== RUN   TestArithmeticOperators/Complex_arithmetic_chain
+=== RUN   TestArithmeticOperators/Arithmetic_with_variables
+--- PASS: TestArithmeticOperators (0.00s)
+    --- PASS: TestArithmeticOperators/Addition (0.00s)
+    --- PASS: TestArithmeticOperators/Subtraction (0.00s)
+    --- PASS: TestArithmeticOperators/Multiplication (0.00s)
+    --- PASS: TestArithmeticOperators/Division_returns_float (0.00s)
+    --- PASS: TestArithmeticOperators/Modulo (0.00s)
+    --- PASS: TestArithmeticOperators/Complex_expression_with_precedence (0.00s)
+    --- PASS: TestArithmeticOperators/Parentheses_override_precedence (0.00s)
+    --- PASS: TestArithmeticOperators/Negative_numbers (0.00s)
+    --- PASS: TestArithmeticOperators/Complex_arithmetic_chain (0.00s)
+    --- PASS: TestArithmeticOperators/Arithmetic_with_variables (0.00s)
+=== RUN   TestComparisonOperators
+=== RUN   TestComparisonOperators/Equal
+=== RUN   TestComparisonOperators/Not_equal
+=== RUN   TestComparisonOperators/Greater_than
+=== RUN   TestComparisonOperators/Less_than
+=== RUN   TestComparisonOperators/Greater_or_equal
+=== RUN   TestComparisonOperators/Less_or_equal
+=== RUN   TestComparisonOperators/Equal_false
+=== RUN   TestComparisonOperators/Not_equal_false
+=== RUN   TestComparisonOperators/Greater_than_false
+=== RUN   TestComparisonOperators/Less_than_false
+--- PASS: TestComparisonOperators (0.00s)
+    --- PASS: TestComparisonOperators/Equal (0.00s)
+    --- PASS: TestComparisonOperators/Not_equal (0.00s)
+    --- PASS: TestComparisonOperators/Greater_than (0.00s)
+    --- PASS: TestComparisonOperators/Less_than (0.00s)
+    --- PASS: TestComparisonOperators/Greater_or_equal (0.00s)
+    --- PASS: TestComparisonOperators/Less_or_equal (0.00s)
+    --- PASS: TestComparisonOperators/Equal_false (0.00s)
+    --- PASS: TestComparisonOperators/Not_equal_false (0.00s)
+    --- PASS: TestComparisonOperators/Greater_than_false (0.00s)
+    --- PASS: TestComparisonOperators/Less_than_false (0.00s)
+=== RUN   TestLogicalOperators
+=== RUN   TestLogicalOperators/AND_operator
+=== RUN   TestLogicalOperators/OR_operator
+=== RUN   TestLogicalOperators/NOT_operator
+=== RUN   TestLogicalOperators/NOT_keyword
+=== RUN   TestLogicalOperators/Short-circuit_AND_true
+=== RUN   TestLogicalOperators/Short-circuit_AND_false
+=== RUN   TestLogicalOperators/Short-circuit_OR_true
+=== RUN   TestLogicalOperators/Short-circuit_OR_false
+=== RUN   TestLogicalOperators/Complex_logical_expression
+=== RUN   TestLogicalOperators/Logical_with_variables
+--- PASS: TestLogicalOperators (0.00s)
+    --- PASS: TestLogicalOperators/AND_operator (0.00s)
+    --- PASS: TestLogicalOperators/OR_operator (0.00s)
+    --- PASS: TestLogicalOperators/NOT_operator (0.00s)
+    --- PASS: TestLogicalOperators/NOT_keyword (0.00s)
+    --- PASS: TestLogicalOperators/Short-circuit_AND_true (0.00s)
+    --- PASS: TestLogicalOperators/Short-circuit_AND_false (0.00s)
+    --- PASS: TestLogicalOperators/Short-circuit_OR_true (0.00s)
+    --- PASS: TestLogicalOperators/Short-circuit_OR_false (0.00s)
+    --- PASS: TestLogicalOperators/Complex_logical_expression (0.00s)
+    --- PASS: TestLogicalOperators/Logical_with_variables (0.00s)
+FAIL
+FAIL	command-line-arguments	4.100s
+FAIL

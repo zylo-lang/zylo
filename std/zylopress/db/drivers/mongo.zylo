@@ -1,0 +1,40 @@
+// ZyloPress MongoDB Driver
+import { logger } from '../../utils.zylo'
+
+class MongoDBDriver {
+  var connection: Any = null
+  var config: Map
+
+  func connect(config: Map) -> Void {
+    this.config = config
+    this.connection = zylo.db.mongodb.connect(config.DB_URI)
+    logger.info('Connected to MongoDB database')
+  }
+
+  func query(sql: String, params: List<Any>) -> List<Map> {
+    // For MongoDB, adapt SQL-like queries to MongoDB queries
+    // This is a simplified adaptation
+    var collection = sql.split('FROM')[1].trim().split(' ')[0]
+    var query = {}
+    // Parse WHERE conditions into MongoDB query
+    if (sql.contains('WHERE')) {
+      var whereClause = sql.split('WHERE')[1].split('ORDER')[0].trim()
+      // Simple parsing
+      query = { [params[0]]: params[1] }  // Assume simple equality
+    }
+    return this.connection.collection(collection).find(query).toArray()
+  }
+
+  func close() -> Void {
+    if (this.connection) {
+      this.connection.close()
+      logger.info('MongoDB connection closed')
+    }
+  }
+
+  func getName() -> String {
+    return 'MongoDB'
+  }
+}
+
+export default MongoDBDriver

@@ -1,0 +1,46 @@
+// ZyloPress JWT Security Module - Native Zylo
+var secret = zylo.env.get('JWT_SECRET') || 'zylo_default_secret'
+
+func sign(payload: Map, options: Map = {}) -> String {
+  var header = { alg: 'HS256', typ: 'JWT' }
+  var now = zylo.time.unix()
+  var exp = options.expiresIn ? now + options.expiresIn : now + 3600  // default 1h
+  var fullPayload = { ...payload, iat: now, exp: exp }
+
+  var encodedHeader = zylo.base64url.encode(zylo.json.stringify(header))
+  var encodedPayload = zylo.base64url.encode(zylo.json.stringify(fullPayload))
+
+  var data = encodedHeader + '.' + encodedPayload
+  var signature = zylo.crypto.hmac.sha256(data, secret).base64url()
+
+  return data + '.' + signature
+}
+
+func verify(token: String) -> Map {
+  var parts = token.split('.')
+  if (parts.length != 3) {
+    throw Error('Invalid token format')
+  }
+
+  var encodedHeader = parts[0]
+  var encodedPayload = parts[1]
+  var signature = parts[2]
+
+  var data = encodedHeader + '.' + encodedPayload
+  var expectedSignature = zylo.crypto.hmac.sha256(data, secret).base64url()
+
+  if (signature != expectedSignature) {
+    throw Error('Invalid signature')
+  }
+
+  var payload = zylo.json.parse(zylo.base64url.decode(encodedPayload))
+  var now = zylo.time.unix()
+
+  if (payload.exp && payload.exp < now) {
+    throw Error('Token expired')
+  }
+
+  return payload
+}
+
+export { sign, verify }

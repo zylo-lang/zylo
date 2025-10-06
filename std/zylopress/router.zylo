@@ -1,0 +1,53 @@
+// ZyloPress Router - Modular routing with chained methods
+import { logger } from './utils.zylo'
+
+class Router {
+  var basePath: String
+  var routes: Map<String, Map<String, List<Function>>> = {}
+  var middlewares: List<Function> = []
+  var app: ZyloPressApp
+
+  func init(basePath: String = '', app: ZyloPressApp = null) {
+    this.basePath = basePath
+    this.app = app
+  }
+
+  func route(path: String) -> RouterRouteBuilder {
+    return new RouterRouteBuilder(this, path)
+  }
+
+  func use(middleware: Function) -> Void {
+    this.middlewares.push(middleware)
+  }
+
+  func getRoutes() -> Map<String, Map<String, List<Function>>> {
+    return this.routes
+  }
+
+  func addRoute(method: String, path: String, handlers: List<Function>) -> Void {
+    var fullPath = this.basePath + path
+    var key = method + ' ' + fullPath
+    var allHandlers = this.middlewares + handlers
+    this.routes[key] = { handlers: allHandlers }
+    if (this.app) {
+      this.app.addRoute(method, fullPath, allHandlers)
+    }
+  }
+}
+
+class RouterRouteBuilder {
+  var router: Router
+  var path: String
+
+  func init(router: Router, path: String) {
+    this.router = router
+    this.path = path
+  }
+
+  func method(httpMethod: String, handler: Function) -> RouterRouteBuilder {
+    this.router.addRoute(httpMethod, this.path, [handler])
+    return this
+  }
+}
+
+export default Router

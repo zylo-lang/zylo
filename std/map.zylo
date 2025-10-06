@@ -1,0 +1,243 @@
+// Map/dictionary manipulation utilities for Zylo standard library
+
+// Create new empty map
+func create() map[string]any {
+    // Implementation handled by runtime
+    return map[string]any{}
+}
+
+// Get value from map with key
+func get(m map[string]any, key string) any {
+    // Implementation handled by runtime - returns nil if key not found
+    return nil
+}
+
+// Set value in map at key
+func set(m map[string]any, key string, value any) map[string]any {
+    // Implementation handled by runtime
+    return m
+}
+
+// Check if map contains key
+func has_key(m map[string]any, key string) bool {
+    // Implementation handled by runtime
+    return false
+}
+
+// Remove key from map
+func remove(m map[string]any, key string) map[string]any {
+    if !has_key(m, key) {
+        show.error("[ZYLO_ERR_122] Tipo: Clave no existe en remove. Línea: -1, Columna: -1")
+        return m
+    }
+    // Implementation handled by runtime
+    return m
+}
+
+// Get all keys from map
+func keys(m map[string]any) []string {
+    // Implementation handled by runtime - returns array of strings
+    return []string{}
+}
+
+// Get all values from map
+func values(m map[string]any) []any {
+    // Implementation handled by runtime - returns array of values
+    return []any{}
+}
+
+// Get map size (number of entries)
+func size(m map[string]any) int {
+    // Implementation handled by runtime
+    return 0
+}
+
+// Check if map is empty
+func is_empty(m map[string]any) bool {
+    return size(m) == 0
+}
+
+// Clear all entries from map
+func clear(m map[string]any) map[string]any {
+    // Implementation handled by runtime - returns new empty map
+    return map[string]any{}
+}
+
+// Get value with default if key not found
+func get_or_default(m map[string]any, key string, default_value any) any {
+    if has_key(m, key) {
+        return get(m, key)
+    }
+    return default_value
+}
+
+// Merge two maps (values from second override first)
+func merge(m1 map[string]any, m2 map[string]any) map[string]any {
+    result map[string]any := m1  // Clone m1
+
+    m2_keys []string := keys(m2)
+    i int := 0
+    while i < len(m2_keys) {
+        key string := m2_keys[i]
+        value any := get(m2, key)
+        result = set(result, key, value)
+        i = i + 1
+    }
+
+    return result
+}
+
+// Create map from key-value pairs array [[key1, val1], [key2, val2], ...]
+func from_pairs(pairs [][]any) map[string]any {
+    result map[string]any := create()
+
+    i int := 0
+    while i < len(pairs) {
+        pair []any := pairs[i]
+        if len(pair) >= 2 {
+            key any := pair[0]
+            value any := pair[1]
+
+            // Convert key to string if needed
+            key_str string := ""
+            if key == string(int(key)) { // numeric conversion
+                key_str = string(int(key))
+            } else {
+                key_str = key  // assume already string
+            }
+
+            result = set(result, key_str, value)
+        } else {
+            show.error("[ZYLO_ERR_123] Tipo: Par inválido en from_pairs. Línea: -1, Columna: -1")
+        }
+        i = i + 1
+    }
+
+    return result
+}
+
+// Convert map to key-value pairs array
+func to_pairs(m map[string]any) [][]any {
+    result [][]any := []
+
+    m_keys []string := keys(m)
+    i int := 0
+    while i < len(m_keys) {
+        key string := m_keys[i]
+        value any := get(m, key)
+        pair []any := [key, value]
+        result = append(result, pair)
+        i = i + 1
+    }
+
+    return result
+}
+
+// Filter map entries based on predicate function
+func filter(m map[string]any, predicate func(string, any) bool) map[string]any {
+    result map[string]any := create()
+
+    m_keys []string := keys(m)
+    i int := 0
+    while i < len(m_keys) {
+        key string := m_keys[i]
+        value any := get(m, key)
+        if predicate(key, value) {
+            result = set(result, key, value)
+        }
+        i = i + 1
+    }
+
+    return result
+}
+
+// Map values using transformation function
+func map_values(m map[string]any, mapper func(string, any) any) map[string]any {
+    result map[string]any := create()
+
+    m_keys []string := keys(m)
+    i int := 0
+    while i < len(m_keys) {
+        key string := m_keys[i]
+        old_value any := get(m, key)
+        new_value any := mapper(key, old_value)
+        result = set(result, key, new_value)
+        i = i + 1
+    }
+
+    return result
+}
+
+// Check if any entry matches predicate
+func contains_predicate(m map[string]any, predicate func(string, any) bool) bool {
+    m_keys []string := keys(m)
+    i int := 0
+    while i < len(m_keys) {
+        key string := m_keys[i]
+        value any := get(m, key)
+        if predicate(key, value) {
+            return true
+        }
+        i = i + 1
+    }
+    return false
+}
+
+// Find first key matching predicate
+func find_key(m map[string]any, predicate func(string, any) bool) string {
+    m_keys []string := keys(m)
+    i int := 0
+    while i < len(m_keys) {
+        key string := m_keys[i]
+        value any := get(m, key)
+        if predicate(key, value) {
+            return key
+        }
+        i = i + 1
+    }
+    return ""
+}
+
+// Find first value matching predicate
+func find_value(m map[string]any, predicate func(string, any) bool) any {
+    m_keys []string := keys(m)
+    i int := 0
+    while i < len(m_keys) {
+        key string := m_keys[i]
+        value any := get(m, key)
+        if predicate(key, value) {
+            return value
+        }
+        i = i + 1
+    }
+    return nil
+}
+
+// Count entries matching predicate
+func count(m map[string]any, predicate func(string, any) bool) int {
+    count int := 0
+    m_keys []string := keys(m)
+    i int := 0
+    while i < len(m_keys) {
+        key string := m_keys[i]
+        value any := get(m, key)
+        if predicate(key, value) {
+            count = count + 1
+        }
+        i = i + 1
+    }
+    return count
+}
+
+// Check if value exists in map
+func contains_value(m map[string]any, value any) bool {
+    m_values []any := values(m)
+    i int := 0
+    while i < len(m_values) {
+        if m_values[i] == value {
+            return true
+        }
+        i = i + 1
+    }
+    return false
+}

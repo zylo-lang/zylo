@@ -1,0 +1,21 @@
+// ZyloPress Bcrypt Security Module - Native Zylo
+var saltRounds = 12
+
+func hash(password: String) -> String {
+  var salt = zylo.crypto.randomBytes(16).toString('hex')
+  var hash = zylo.crypto.pbkdf2(password, salt, 100000, 64, 'sha256').toString('hex')
+  return salt + ':' + hash
+}
+
+func compare(password: String, hashed: String) -> Bool {
+  var parts = hashed.split(':')
+  if (parts.length != 2) {
+    return false
+  }
+  var salt = parts[0]
+  var storedHash = parts[1]
+  var computedHash = zylo.crypto.pbkdf2(password, salt, 100000, 64, 'sha256').toString('hex')
+  return computedHash == storedHash
+}
+
+export { hash, compare }

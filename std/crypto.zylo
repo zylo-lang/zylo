@@ -1,0 +1,253 @@
+// Basic cryptographic functions
+
+// Hash functions
+export func md5(data: String): String {
+    return md5(data)
+}
+
+export func sha1(data: String): String {
+    return sha1(data)
+}
+
+export func sha256(data: String): String {
+    return sha256(data)
+}
+
+export func sha512(data: String): String {
+    return sha512(data)
+}
+
+// HMAC functions
+export func hmac_md5(key: String, data: String): String {
+    return hmac("md5", key, data)
+}
+
+export func hmac_sha1(key: String, data: String): String {
+    return hmac("sha1", key, data)
+}
+
+export func hmac_sha256(key: String, data: String): String {
+    return hmac("sha256", key, data)
+}
+
+export func hmac_sha512(key: String, data: String): String {
+    return hmac("sha512", key, data)
+}
+
+// Generic HMAC
+export func hmac(algorithm: String, key: String, data: String): String {
+    // This would need to be implemented in the runtime
+    return ""
+}
+
+// Password hashing
+export func bcrypt_hash(password: String, cost: Int = 10): String {
+    // This would need to be implemented in the runtime
+    return ""
+}
+
+export func bcrypt_verify(password: String, hash: String): Bool {
+    // This would need to be implemented in the runtime
+    return false
+}
+
+// Random bytes
+export func random_bytes(length: Int): String {
+    // This would need to be implemented in the runtime
+    return ""
+}
+
+// UUID generation
+export func uuid_v4(): String {
+    return uuid()
+}
+
+export func uuid_v1(): String {
+    return uuid.v1()
+}
+
+export func uuid_v3(name: String, namespace: String): String {
+    return uuid.v3(name, namespace)
+}
+
+export func uuid_v5(name: String, namespace: String): String {
+    return uuid.v5(name, namespace)
+}
+
+// Base64 encoding/decoding
+export func base64_encode(data: String): String {
+    return base64_encode(data)
+}
+
+export func base64_decode(data: String): String {
+    return base64_decode(data)
+}
+
+// URL-safe base64
+export func base64_url_encode(data: String): String {
+    let encoded = base64_encode(data)
+    return encoded.replace("+", "-").replace("/", "_").replace("=", "")
+}
+
+export func base64_url_decode(data: String): String {
+    let padded = data.replace("-", "+").replace("_", "/")
+    while len(padded) % 4 != 0 {
+        padded = padded + "="
+    }
+    return base64_decode(padded)
+}
+
+// Hex encoding/decoding
+export func hex_encode(data: String): String {
+    // This would need to be implemented in the runtime
+    return ""
+}
+
+export func hex_decode(data: String): String {
+    // This would need to be implemented in the runtime
+    return ""
+}
+
+// Simple XOR encryption (NOT secure, for educational purposes only)
+export func xor_encrypt(data: String, key: String): String {
+    let result = []
+    let key_len = len(key)
+    let i = 0
+    while i < len(data) {
+        let data_byte = data[i]
+        let key_byte = key[i % key_len]
+        result.append(string(data_byte ^ key_byte))
+        i = i + 1
+    }
+    return join(result, "")
+}
+
+export func xor_decrypt(data: String, key: String): String {
+    return xor_encrypt(data, key) // XOR is symmetric
+}
+
+// Caesar cipher (NOT secure, for educational purposes only)
+export func caesar_encrypt(text: String, shift: Int): String {
+    let result = []
+    for char in text {
+        if char >= 'a' && char <= 'z' {
+            let new_char = ((char - 'a' + shift) % 26) + 'a'
+            result.append(string(new_char))
+        } else if char >= 'A' && char <= 'Z' {
+            let new_char = ((char - 'A' + shift) % 26) + 'A'
+            result.append(string(new_char))
+        } else {
+            result.append(string(char))
+        }
+    }
+    return join(result, "")
+}
+
+export func caesar_decrypt(text: String, shift: Int): String {
+    return caesar_encrypt(text, 26 - shift)
+}
+
+// Simple checksum
+export func checksum(data: String): Int {
+    let sum = 0
+    for char in data {
+        sum = sum + char
+    }
+    return sum % 256
+}
+
+// CRC32 (placeholder)
+export func crc32(data: String): String {
+    // This would need to be implemented in the runtime
+    return ""
+}
+
+// Key derivation
+export func pbkdf2(password: String, salt: String, iterations: Int = 10000, key_length: Int = 32, hash_func: String = "sha256"): String {
+    // This would need to be implemented in the runtime
+    return ""
+}
+
+// Digital signatures (placeholders)
+export func rsa_generate_keypair(bits: Int = 2048): Map {
+    // This would need to be implemented in the runtime
+    return {"public_key": "", "private_key": ""}
+}
+
+export func rsa_sign(private_key: String, data: String): String {
+    // This would need to be implemented in the runtime
+    return ""
+}
+
+export func rsa_verify(public_key: String, data: String, signature: String): Bool {
+    // This would need to be implemented in the runtime
+    return false
+}
+
+// JWT (JSON Web Tokens)
+export class JWT {
+    header: Map
+    payload: Map
+    signature: String
+
+    func new(payload: Map, secret: String, algorithm: String = "HS256") {
+        this.header = {"alg": algorithm, "typ": "JWT"}
+        this.payload = payload
+        this.signature = this.sign(secret, algorithm)
+    }
+
+    func sign(secret: String, algorithm: String): String {
+        let header_b64 = base64_url_encode(json.stringify(this.header))
+        let payload_b64 = base64_url_encode(json.stringify(this.payload))
+        let message = header_b64 + "." + payload_b64
+
+        if algorithm == "HS256" {
+            return hmac_sha256(secret, message)
+        } else if algorithm == "HS512" {
+            return hmac_sha512(secret, message)
+        }
+        return ""
+    }
+
+    func encode(): String {
+        let header_b64 = base64_url_encode(json.stringify(this.header))
+        let payload_b64 = base64_url_encode(json.stringify(this.payload))
+        return header_b64 + "." + payload_b64 + "." + base64_url_encode(this.signature)
+    }
+
+    func verify(secret: String): Bool {
+        let expected_signature = this.sign(secret, this.header["alg"])
+        return this.signature == expected_signature
+    }
+}
+
+export func jwt_encode(payload: Map, secret: String, algorithm: String = "HS256"): String {
+    let jwt = JWT{payload, secret, algorithm}
+    return jwt.encode()
+}
+
+export func jwt_decode(token: String): Map {
+    let parts = token.split(".")
+    if len(parts) != 3 {
+        throw "Invalid JWT token"
+    }
+
+    let header = json.parse(base64_url_decode(parts[0]))
+    let payload = json.parse(base64_url_decode(parts[1]))
+    let signature = base64_url_decode(parts[2])
+
+    return {
+        "header": header,
+        "payload": payload,
+        "signature": signature
+    }
+}
+
+export func jwt_verify(token: String, secret: String): Bool {
+    let decoded = jwt_decode(token)
+    let jwt = JWT{}
+    jwt.header = decoded["header"]
+    jwt.payload = decoded["payload"]
+    jwt.signature = decoded["signature"]
+    return jwt.verify(secret)
+}

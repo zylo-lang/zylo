@@ -1,0 +1,248 @@
+// HTTP client functionality
+
+// HTTP methods
+export const GET = "GET"
+export const POST = "POST"
+export const PUT = "PUT"
+export const DELETE = "DELETE"
+export const PATCH = "PATCH"
+export const HEAD = "HEAD"
+export const OPTIONS = "OPTIONS"
+
+// HTTP status codes
+export const STATUS_OK = 200
+export const STATUS_CREATED = 201
+export const STATUS_NO_CONTENT = 204
+export const STATUS_BAD_REQUEST = 400
+export const STATUS_UNAUTHORIZED = 401
+export const STATUS_FORBIDDEN = 403
+export const STATUS_NOT_FOUND = 404
+export const STATUS_INTERNAL_SERVER_ERROR = 500
+
+// HTTP methods
+export const GET = "GET"
+export const POST = "POST"
+export const PUT = "PUT"
+export const DELETE = "DELETE"
+export const PATCH = "PATCH"
+export const HEAD = "HEAD"
+export const OPTIONS = "OPTIONS"
+
+// Response class
+export class Response {
+    status: Int
+    headers: Map
+    body: String
+    url: String
+
+    func is_success(): Bool {
+        return this.status >= 200 && this.status < 300
+    }
+
+    func is_error(): Bool {
+        return this.status >= 400
+    }
+
+    func json(): Any {
+        return json.parse(this.body)
+    }
+
+    func text(): String {
+        return this.body
+    }
+}
+
+// Request class
+export class Request {
+    method: String
+    url: String
+    headers: Map
+    body: String
+    timeout: Int
+
+    func new(method: String, url: String) {
+        this.method = method
+        this.url = url
+        this.headers = {}
+        this.body = ""
+        this.timeout = 30000 // 30 seconds
+    }
+
+    func set_header(key: String, value: String): Request {
+        this.headers[key] = value
+        return this
+    }
+
+    func set_body(body: String): Request {
+        this.body = body
+        return this
+    }
+
+    func set_json_body(data: Any): Request {
+        this.body = json.stringify(data)
+        this.headers["Content-Type"] = "application/json"
+        return this
+    }
+
+    func set_timeout(ms: Int): Request {
+        this.timeout = ms
+        return this
+    }
+
+    func send(): Response {
+        let options = {
+            "method": this.method,
+            "headers": this.headers,
+            "body": this.body,
+            "timeout": this.timeout
+        }
+
+        let result = null
+        if this.method == GET {
+            result = http.get(this.url, options)
+        } else if this.method == POST {
+            result = http.post(this.url, options)
+        } else if this.method == PUT {
+            result = http.put(this.url, options)
+        } else if this.method == DELETE {
+            result = http.delete(this.url, options)
+        } else {
+            // For other methods, use a generic approach
+            options["method"] = this.method
+            result = http.request(this.url, options)
+        }
+
+        let response = Response{}
+        response.status = result.status
+        response.headers = result.headers
+        response.body = result.body
+        response.url = this.url
+        return response
+    }
+}
+
+// Convenience functions
+export func get(url: String, headers: Map = {}): Response {
+    let result = http.get(url, headers)
+    let response = Response{}
+    response.status = result["status"]
+    response.headers = result["headers"]
+    response.body = result["body"]
+    response.url = url
+    return response
+}
+
+export func post(url: String, data: Any = null, headers: Map = {}): Response {
+    let result = http.post_json(url, data, headers)
+    let response = Response{}
+    response.status = result["status"]
+    response.headers = result["headers"]
+    response.body = result["body"]
+    response.url = url
+    return response
+}
+
+export func put(url: String, data: Any = null, headers: Map = {}): Response {
+    // PUT not implemented yet, fallback to POST
+    return post(url, data, headers)
+}
+
+export func delete(url: String, headers: Map = {}): Response {
+    // DELETE not implemented yet, return error
+    let response = Response{}
+    response.status = 501 // Not Implemented
+    response.headers = {}
+    response.body = "DELETE method not implemented"
+    response.url = url
+    return response
+}
+
+// Async convenience functions
+export func get_async(url: String, headers: Map = {}): Future {
+    let result = http.get_async(url, headers)
+    return result
+}
+
+export func post_json_async(url: String, data: Any, headers: Map = {}): Future {
+    let result = http.post_json_async(url, data, headers)
+    return result
+}
+
+// JSON API helpers
+export func get_json(url: String, headers: Map = {}): Any {
+    let response = get(url, headers)
+    if response.is_success() {
+        return response.json()
+    }
+    throw "HTTP GET failed: " + string(response.status)
+}
+
+export func post_json(url: String, data: Any, headers: Map = {}): Any {
+    let response = post(url, data, headers)
+    if response.is_success() {
+        return response.json()
+    }
+    throw "HTTP POST failed: " + string(response.status)
+}
+
+// Server function
+export func listen(port: Int, handler: Func): String {
+    return http.listen(port, handler)
+}
+
+// URL encoding/decoding
+export func url_encode(str: String): String {
+    // This would need to be implemented in runtime
+    return str // placeholder
+}
+
+export func url_decode(str: String): String {
+    // This would need to be implemented in runtime
+    return str // placeholder
+}
+
+// Query parameter helpers
+export func build_url(base: String, params: Map): String {
+    if len(params) == 0 {
+        return base
+    }
+    let query = []
+    for key, value in params {
+        query.append(url_encode(key) + "=" + url_encode(string(value)))
+    }
+    return base + "?" + join(query, "&")
+}
+
+export func parse_url(url: String): Map {
+    let result = {"scheme": "", "host": "", "path": "", "query": {}, "fragment": ""}
+
+    // Simple URL parsing - would need more robust implementation
+    if url.contains("://") {
+        let parts = url.split("://", 2)
+        result["scheme"] = parts[0]
+        url = parts[1]
+    }
+
+    if url.contains("?") {
+        let parts = url.split("?", 2)
+        url = parts[0]
+        let query_str = parts[1]
+        if query_str.contains("#") {
+            let frag_parts = query_str.split("#", 2)
+            query_str = frag_parts[0]
+            result["fragment"] = frag_parts[1]
+        }
+        result["query"] = from_query_string(query_str)
+    }
+
+    if url.contains("/") {
+        let parts = url.split("/", 2)
+        result["host"] = parts[0]
+        result["path"] = "/" + parts[1]
+    } else {
+        result["host"] = url
+        result["path"] = "/"
+    }
+
+    return result
+}

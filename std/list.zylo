@@ -1,0 +1,278 @@
+// List (array) manipulation utilities for Zylo standard library
+
+// Get list length
+func len(list []any) int {
+    // Implementation handled by runtime
+    return 0
+}
+
+// Append element to list
+func append(list []any, element any) []any {
+    // Implementation handled by runtime
+    return list
+}
+
+// Prepend element to list
+func prepend(list []any, element any) []any {
+    // Implementation handled by runtime - creates new list with element at start
+    return []any{}
+}
+
+// Remove element at index
+func remove_at(list []any, index int) []any {
+    if index < 0 || index >= len(list) {
+        show.error("[ZYLO_ERR_116] Tipo: Índice fuera de rango en remove_at. Línea: -1, Columna: -1")
+        return list
+    }
+    // Implementation handled by runtime
+    return list
+}
+
+// Get element at index
+func get(list []any, index int) any {
+    if index < 0 || index >= len(list) {
+        show.error("[ZYLO_ERR_117] Tipo: Índice fuera de rango en get. Línea: -1, Columna: -1")
+        return nil
+    }
+    // Implementation handled by runtime
+    return nil
+}
+
+// Set element at index
+func set(list []any, index int, value any) []any {
+    if index < 0 || index >= len(list) {
+        show.error("[ZYLO_ERR_118] Tipo: Índice fuera de rango en set. Línea: -1, Columna: -1")
+        return list
+    }
+    // Implementation handled by runtime
+    return list
+}
+
+// Check if list contains element
+func contains(list []any, element any) bool {
+    i int := 0
+    while i < len(list) {
+        if get(list, i) == element {
+            return true
+        }
+        i = i + 1
+    }
+    return false
+}
+
+// Find index of element
+func index_of(list []any, element any) int {
+    i int := 0
+    while i < len(list) {
+        if get(list, i) == element {
+            return i
+        }
+        i = i + 1
+    }
+    return -1
+}
+
+// Create sublist from start to end index
+func slice(list []any, start int, end int) []any {
+    if start < 0 {
+        start = 0
+    }
+    if end > len(list) {
+        end = len(list)
+    }
+    if start >= end {
+        return []any{}
+    }
+    // Implementation handled by runtime
+    return list
+}
+
+// Reverse list
+func reverse(list []any) []any {
+    // Implementation handled by runtime
+    return list
+}
+
+// Map function over list elements
+func map_list(list []any, mapper func(any) any) []any {
+    result []any := []
+    i int := 0
+    while i < len(list) {
+        element any := get(list, i)
+        mapped any := mapper(element)
+        result = append(result, mapped)
+        i = i + 1
+    }
+    return result
+}
+
+// Filter list elements based on predicate
+func filter(list []any, predicate func(any) bool) []any {
+    result []any := []
+    i int := 0
+    while i < len(list) {
+        element any := get(list, i)
+        if predicate(element) {
+            result = append(result, element)
+        }
+        i = i + 1
+    }
+    return result
+}
+
+// Reduce list to single value
+func reduce(list []any, initial any, reducer func(any, any) any) any {
+    result any := initial
+    i int := 0
+    while i < len(list) {
+        element any := get(list, i)
+        result = reducer(result, element)
+        i = i + 1
+    }
+    return result
+}
+
+// Check if all elements match predicate
+func all(list []any, predicate func(any) bool) bool {
+    i int := 0
+    while i < len(list) {
+        element any := get(list, i)
+        if !predicate(element) {
+            return false
+        }
+        i = i + 1
+    }
+    return true
+}
+
+// Check if any element matches predicate
+func any_match(list []any, predicate func(any) bool) bool {
+    i int := 0
+    while i < len(list) {
+        element any := get(list, i)
+        if predicate(element) {
+            return true
+        }
+        i = i + 1
+    }
+    return false
+}
+
+// Find first element matching predicate
+func find_first(list []any, predicate func(any) bool) any {
+    i int := 0
+    while i < len(list) {
+        element any := get(list, i)
+        if predicate(element) {
+            return element
+        }
+        i = i + 1
+    }
+    return nil
+}
+
+// Create list with range of numbers
+func range_list(start int, end int, step int) []any {
+    if step <= 0 {
+        show.error("[ZYLO_ERR_119] Tipo: Step no positivo en range. Línea: -1, Columna: -1")
+        return []any{}
+    }
+
+    result []any := []
+    current int := start
+    while current < end {
+        result = append(result, current)
+        current = current + step
+    }
+    return result
+}
+
+// Get first element
+func first(list []any) any {
+    if len(list) == 0 {
+        show.error("[ZYLO_ERR_120] Tipo: Lista vacía en first. Línea: -1, Columna: -1")
+        return nil
+    }
+    return get(list, 0)
+}
+
+// Get last element
+func last(list []any) any {
+    if len(list) == 0 {
+        show.error("[ZYLO_ERR_121] Tipo: Lista vacía en last. Línea: -1, Columna: -1")
+        return nil
+    }
+    return get(list, len(list) - 1)
+}
+
+// Check if list is empty
+func is_empty(list []any) bool {
+    return len(list) == 0
+}
+
+// Sort list (simple bubble sort for numbers)
+func sort(list []any, ascending bool) []any {
+    // Simple bubble sort for numeric values
+    result []any := []
+    // Copy list (simplified)
+    i int := 0
+    while i < len(list) {
+        result = append(result, get(list, i))
+        i = i + 1
+    }
+
+    i = 0
+    while i < len(result) - 1 {
+        j int := 0
+        while j < len(result) - i - 1 {
+            a any := get(result, j)
+            b any := get(result, j + 1)
+
+            should_swap bool := false
+            if ascending {
+                should_swap = a > b  // Simplified comparison
+            } else {
+                should_swap = a < b
+            }
+
+            if should_swap {
+                // Swap elements
+                temp any := a
+                result = set(result, j, b)
+                result = set(result, j + 1, temp)
+            }
+            j = j + 1
+        }
+        i = i + 1
+    }
+
+    return result
+}
+
+// Count elements matching predicate
+func count(list []any, predicate func(any) bool) int {
+    count int := 0
+    i int := 0
+    while i < len(list) {
+        element any := get(list, i)
+        if predicate(element) {
+            count = count + 1
+        }
+        i = i + 1
+    }
+    return count
+}
+
+// Get unique elements
+func unique(list []any) []any {
+    result []any := []
+    i int := 0
+    while i < len(list) {
+        element any := get(list, i)
+        if !contains(result, element) {
+            result = append(result, element)
+        }
+        i = i + 1
+    }
+    return result
+}
